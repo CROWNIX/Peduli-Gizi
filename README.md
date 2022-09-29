@@ -24,7 +24,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Peduli Gizi
 
-Peduli Gizi merupakan website yang menyediakan semua jenis resep makanan yang sesuai dengan kebutuhan kalori keluargamu.
+Peduli Gizi aplikasi yang membantu keluarga anda mencukupi gizi sehari-hari
 
 
 
