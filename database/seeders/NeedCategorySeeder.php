@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class NeedCategorySeeder extends Seeder
 {
@@ -13,6 +14,30 @@ class NeedCategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        $needCategories = [
+            [
+                'category' => 'Menu ibu hamil',
+            ],
+            [
+                'category' => 'Menu ibu hamil & menyusui',
+            ],
+            [
+                'category' => 'Menu bayi',
+            ],
+            [
+                'category' => 'Menu balita & batita',
+            ],
+            [
+                'category' => 'Menu Anak',
+            ],
+            [
+                'category' => 'Menu Sehat untuk keluarga',
+            ],
+            [
+                'category' => 'Menu menopause',
+            ],
+        ];
+        
+        DB::table('need_categories')->insert($needCategories);
     }
 }

@@ -15,13 +15,18 @@ class CreateRecipesTable extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("need_category_id");
-            $table->foreignId("age_category_id");
+            $table->foreignId("need_sub_category_id")->constrained();
+            // $table->foreignId("age_category_id");
             $table->string("title");
-            $table->text("image");
-            $table->text("description");
+            $table->text("image")->default("default.jpg");
+            // $table->text("description");
             $table->longText("ingridients");
             $table->longText("steps");
+            $table->integer("portion");
+            $table->integer("energy");
+            $table->decimal("protein", $precision = 8, $scale = 1);
+            $table->decimal("fat", $precision = 8, $scale = 1);
+            $table->decimal("carbohydrate", $precision = 8, $scale = 1);
             $table->timestamps();
         });
     }

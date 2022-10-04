@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UserSeeder extends Seeder
 {
@@ -13,6 +14,17 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $users = [
+            [
+                "role_id" => 1,
+                "username" => "rahmat fauzi",
+                "email" => "rahmatfauzi841@gmail.com",
+                "age" => 20,
+                "gender" => "laki-laki",
+                "password" => bcrypt("12345")
+            ],
+        ];
+        
+        DB::table('users')->insert($users);
     }
 }

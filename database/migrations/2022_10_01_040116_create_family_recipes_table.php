@@ -15,8 +15,8 @@ class CreateFamilyRecipesTable extends Migration
     {
         Schema::create('family_recipes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id");
-            $table->foreignId("recipe_id");
+            $table->foreignId("user_id")->constrained();
+            $table->foreignId("recipe_id")->constrained();
             $table->integer("portion");
             $table->string("day");
             $table->enum("type", ["balita", "remaja", "dewasa"]);

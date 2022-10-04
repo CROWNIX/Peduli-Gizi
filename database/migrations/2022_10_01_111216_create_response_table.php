@@ -15,8 +15,8 @@ class CreateResponseTable extends Migration
     {
         Schema::create('response', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id");
-            $table->foreignId("recipe_id");
+            $table->foreignId("user_id")->constrained();
+            $table->foreignId("recipe_id")->constrained();
             $table->string("emote");
             $table->timestamps();
         });

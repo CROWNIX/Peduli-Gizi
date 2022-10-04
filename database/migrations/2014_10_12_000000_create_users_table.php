@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->integer("age");
             $table->enum("gender", ["laki-laki", "perempuan"]);
-            $table->text("image");
+            $table->text("image")->default("default.jpg");
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
