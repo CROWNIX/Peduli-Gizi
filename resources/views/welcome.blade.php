@@ -133,7 +133,7 @@
                     </div>
                 </div>
             </div>
-            <div class="rounded-xl mx-auto bg-gradient-to-b p-[6px] from-[#69B550] to-[#F58634] shadow-lg">
+            <div class="rounded-xl bg-gradient-to-b p-[6px] from-[#69B550] to-[#F58634] shadow-lg">
                 <div class="flex flex-col justify-between h-full bg-white rounded-lg p-4">
                     <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk" class="w-full">
                     <div class="title text-xl font-bold text-black my-2">
