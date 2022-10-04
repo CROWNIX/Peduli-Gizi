@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AgeCategoryController extends Controller
+class AdminNeedSubCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class AgeCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return "admin sub cat";
     }
 
     /**

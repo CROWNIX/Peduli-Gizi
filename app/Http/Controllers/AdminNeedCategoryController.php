@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RecipeController extends Controller
+class AdminNeedCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //
+        return "admin cat";
     }
 
     /**

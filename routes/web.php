@@ -4,13 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FamilyRecipeController;
 use App\Http\Controllers\FoodRecordController;
-use App\Http\Controllers\AgeCategoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\RecipeController;
-use App\Http\Controllers\NeedCategoryController;
-use App\Http\Controllers\NeedSubCategoryController;
+use App\Http\Controllers\AdminAgeCategoryController;
+use App\Http\Controllers\AdminRecipeController;
+use App\Http\Controllers\AdminNeedCategoryController;
+use App\Http\Controllers\AdminNeedSubCategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminHomeController;
+use App\Http\Controllers\AdminDashboardController;
 
 
 /*
@@ -28,10 +30,20 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
 
-Route::resource('profile', ProfileController::class);
-Route::resource('food-record', FoodRecordController::class);
-Route::resource('family-recipe', FamilyRecipeController::class);
-Route::resource('admin/age-category', AgeCategoryController::class);
-Route::resource('admin/need-category', NeedCategoryController::class);
-Route::resource('admin/need-sub-category', NeedSubCategoryController::class);
-Route::resource('admin/recipes', RecipeController::class);
+Route::resources([
+    'profile' => ProfileController::class,
+    'food-record' => FoodRecordController::class,
+    'family-recipe' => FamilyRecipeController::class,
+]);
+
+Route::prefix('admin')->group(function () {
+    Route::get('/', [AdminHomeController::class, 'index']);
+    Route::get('/dashboard', [AdminDashboardController::class, 'index']);
+    Route::resources([
+        'age-category' => AdminAgeCategoryController::class,
+        'need-category' => AdminNeedCategoryController::class,
+        'need-sub-category' => AdminNeedSubCategoryController::class,
+        'recipe' => PostContAdminRecipeControllerroller::class,
+    ]);
+
+});
