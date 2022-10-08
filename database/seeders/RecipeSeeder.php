@@ -18,6 +18,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 1,
                 "title" => "Sego Tumpang Komplit",
+                "slug" => "sego-tumpang-komplit",
                 "ingridients" => "<ul>
                     <li>300 g tempe, potong-potong, rebus, haluskan</li>
                     <li>200 g tahu china, potong-potong dadu, rebus</li>
@@ -57,6 +58,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 1,
                 "title" => "Tahu campur istimewa",
+                "slug" => "tahu-campur-istimewa",
                 "ingridients" => "<ul>
                     <li>250 g mi telur, rendam dalam air</li>
                     <li>200 g tahu cina, potong dadu, goreng setengah matang</li>
@@ -110,6 +112,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 2,
                 "title" => "Bubur Tempe Serai",
+                "slug" => "bubur-tempe-serai",
                 "ingridients" => "<ul>
                     <li>150 g beras, cuci dan bersihkan</li>
                     <li>1 ltr air</li>
@@ -159,6 +162,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 2,
                 "title" => "Nasi Pecel Daun Mengkudu",
+                "slug" => "nasi-pecel-daun-mengkudu",
                 "ingridients" => "<ul>
                     <li>400 g nasi hangat</li>
                     <li>300 g sambal pecel, siap pakai, seduh dengan air hangat</li>
@@ -188,6 +192,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 3,
                 "title" => "Bubur Ikan Sayuran",
+                "slug" => "bubur-ikan-sayuran",
                 "ingridients" => "<ul>
                     <li>100 g daging ikan tenggiri, potong-potong</li>
                     <li>2 btg serai, memarkan</li>
@@ -221,6 +226,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 3,
                 "title" => "Lontong Sup Betawi",
+                "slug" => "lontong sup betawi",
                 "ingridients" => "<ul>
                     <li>1 kg jeroan kambing (hati, sus, babat, paru, dan ginjal)</li>
                     <li>250 g daging kambing</li>
@@ -260,6 +266,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 4,
                 "title" => "Open Sandwich",
+                "slug" => "open-sandwich",
                 "ingridients" => "<ul>
                     <li>6 lbr roti tawar</li>
                     <li>6 lbr daging asap, goreng sebentar dengan mentega</li>
@@ -296,6 +303,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 4,
                 "title" => "Berry Smoothies",
+                "slug" => "berry-smoothies",
                 "ingridients" => "<ul>
                     <li>1 bh pisang ambon, kupas dan potong</li>
                     <li>100 g strawberry</li>
@@ -316,6 +324,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 5,
                 "title" => "Wedang Jasuka",
+                "slug" => "wedang-jasuka",
                 "ingridients" => "<ul>
                     <li>500 ml susu cair</li>
                     <li>1 bks agar-agar bubuk warna hijau</li>
@@ -357,6 +366,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 5,
                 "title" => "Air Kelapa Berempah",
+                "slug" => "air-kelapa-berempah",
                 "ingridients" => "<ul>
                     <li>2 bh kelapa hijau muda, ambil air, dan keruk daging kelapa mudanya</li>
                     <li>200 ml air</li>
@@ -381,6 +391,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 6,
                 "title" => "Katuk Gulung",
+                "slug" => "katuk-gulung",
                 "ingridients" => "<p>
                     <span      style='font-size:20px'><strong>Bahan Dadar:</strong></span></p>
                     <ul>
@@ -429,6 +440,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 6,
                 "title" => "Asem-Asem Tahu Sutera",
+                "slug" => "asem-asem-tahu-sutera",
                 "ingridients" => "<ul>
                     <li>2 ltr air</li>
                     <li>200 g daging sapi, iris dadu</li>
@@ -464,6 +476,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 7,
                 "title" => "Sup Krim Katuk & Scone Kentang",
+                "slug" => "sup-krim-katuk-&-scone-kentang",
                 "ingridients" => "<ul>
                     <li>1 sdm mentaga</li>
                     <li>1/2 bh bawang bombai, cincang halus</li>
@@ -501,6 +514,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 7,
                 "title" => "Nasi Krawu Menit Katuk",
+                "slug" => "nasi-krawu-menit-katuk",
                 "ingridients" => "<ul>
                     <li>500 g beras pulen, tanak</li>
                     </ul>
@@ -567,6 +581,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 8,
                 "title" => "Soto Degan",
+                "slug" => "soto-degan",
                 "ingridients" => "<ul>
                     <li>250 g udang, bersihkan</li>
                     <li>2 btr kelapa, keruk daging, ambil airnya</li>
@@ -605,6 +620,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 8,
                 "title" => "Gelung Degan",
+                "slug" => "gelung-degan",
                 "ingridients" => "<ul>
                     <li>250 g daun singkong, rebus hingga lunak, iris halus</li>
                     <li>300 g kelapa muda, haluskan</li>
@@ -633,6 +649,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 9,
                 "title" => "Bolu Isi Ragout",
+                "slug" => "bolu-isi-ragout",
                 "ingridients" => "<ul>
                     <li>6 btr telur</li>
                     <li>150 g gula pasir</li>
@@ -673,6 +690,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 9,
                 "title" => "Kacang Mete Telur",
+                "slug" => "kacang-mete-telur",
                 "ingridients" => "<ul>
                     <li>300 g kacang mete</li>
                     <li>1 btr telur, kocok</li>
@@ -700,6 +718,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 10,
                 "title" => "Sop Ikan Kecombrang",
+                "slug" => "sop-ikan-kecombrang",
                 "ingridients" => "<ul>
                     <li>150 g mi telur</li>
                     <li>2 sdm minyak zaitun</li>
@@ -748,6 +767,7 @@ class RecipeSeeder extends Seeder
             [
                 "need_sub_category_id" => 10,
                 "title" => "Tim Ayam Sayuran",
+                "slug" => "tim-ayam-sayuran",
                 "ingridients" => "<ul>
                     <li>300 g daging ayam giling</li>
                     <li>100 g udang kupas, cincang halus</li>

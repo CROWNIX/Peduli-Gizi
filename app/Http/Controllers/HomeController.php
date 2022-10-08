@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
-    {
-        return view('welcome');
+    public function index(){
+        return view('welcome', [
+            "title" => "Peduli Gizi | Home",
+            "recipes" => Recipe::limit(3)->get()
+        ]);
     }
 }

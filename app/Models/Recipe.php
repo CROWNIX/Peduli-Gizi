@@ -10,6 +10,7 @@ class Recipe extends Model
     use HasFactory;
 
     protected $guarded = ["id"];
+    protected $with = ["needSubCategory"];
 
     public function needSubCategory(){
         return $this->belongsTo(NeedSubCategory::class);

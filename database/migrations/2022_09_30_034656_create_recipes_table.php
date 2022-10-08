@@ -18,6 +18,7 @@ class CreateRecipesTable extends Migration
             $table->foreignId("need_sub_category_id")->constrained();
             // $table->foreignId("age_category_id");
             $table->string("title");
+            $table->string("slug");
             $table->text("image")->default("default.jpg");
             // $table->text("description");
             $table->longText("ingridients");

@@ -28,25 +28,22 @@ use App\Http\Controllers\AdminDashboardController;
 */
 
 Route::get("/", [HomeController::class, "index"]);
+
+//* Authentication 
 Route::get("/register", [RegisterController::class, "index"]);
 Route::get("/login", [LoginController::class, "index"]);
 
-Route::resources([
-    "profile" => ProfileController::class,
-    "food-records" => FoodRecordController::class,
-    "family-recipes" => FamilyRecipeController::class,
-    "recipes" => RecipeController::class,
-]);
+Route::resource("/profile", ProfileController::class);
+Route::resource("/food-records", FoodRecordController::class);
+Route::resource("/family-recipes", FamilyRecipeController::class);
+Route::resource("/recipes", RecipeController::class)->scoped(["recipe" => "slug"]);
 
 //* Route Admin 
 Route::prefix("admin")->group(function () {
     Route::get("/", [AdminHomeController::class, "index"]);
     Route::get("/dashboard", [AdminDashboardController::class, "index"]);
-    Route::resources([
-        "age-categories" => AdminAgeCategoryController::class,
-        "need-categories" => AdminNeedCategoryController::class,
-        "need-sub-categories" => AdminNeedSubCategoryController::class,
-        "recipes" => AdminRecipeController::class,
-    ]);
-
+    Route::resource("/age-categories", AdminNeedCategoryController::class);
+    Route::resource("/need-categories", FoodRecordController::class);
+    Route::resource("/need-sub-categories", AdminNeedSubCategoryController::class);
+    Route::resource("/recipes", AdminRecipeController::class)->scoped(["recipe" => "slug"]);
 });
