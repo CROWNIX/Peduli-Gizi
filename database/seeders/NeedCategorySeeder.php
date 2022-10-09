@@ -16,25 +16,32 @@ class NeedCategorySeeder extends Seeder
     {
         $needCategories = [
             [
-                'category' => 'Menu ibu hamil',
+                "name" => "Menu ibu hamil",
+                "slug" => "menu-ibu-hamil"
             ],
             [
-                'category' => 'Menu ibu hamil & menyusui',
+                "name" => "Menu ibu hamil & menyusui",
+                "slug" => "menu-ibu-hamil-&-menyusui"
             ],
             [
-                'category' => 'Menu bayi',
+                "name" => "Menu bayi",
+                "slug" => "menu-bayi"
             ],
             [
-                'category' => 'Menu balita & batita',
+                "name" => "Menu balita & batita",
+                "slug" => "menu-balita-&-batita"
             ],
             [
-                'category' => 'Menu Anak',
+                "name" => "Menu Anak",
+                "slug" => "menu-anak"
             ],
             [
-                'category' => 'Menu Sehat untuk keluarga',
+                "name" => "Menu Sehat untuk keluarga",
+                "slug" => "menu-sehat-untuk-keluarga"
             ],
             [
-                'category' => 'Menu menopause',
+                "name" => "Menu menopause",
+                "slug" => "menu-menopause"
             ],
         ];
         

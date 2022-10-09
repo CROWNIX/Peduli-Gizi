@@ -15,7 +15,8 @@ class CreateNeedCategoriesTable extends Migration
     {
         Schema::create('need_categories', function (Blueprint $table) {
             $table->id();
-            $table->string("category");
+            $table->string("name");
+            $table->string("slug");
             $table->timestamps();
         });
     }
