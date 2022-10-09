@@ -17,7 +17,7 @@ class CreateNeedSubCategoriesTable extends Migration
             $table->id();
             $table->foreignId("need_category_id")->constrained();
             $table->string("name");
-            $table->string("slug");
+            $table->string("slug")->unique();
             $table->timestamps();
         });
     }

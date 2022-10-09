@@ -20,7 +20,6 @@ use App\Http\Controllers\AdminDashboardController;
 Route::get("/", [HomeController::class, "index"]);
 
 //* Authentication 
-Route::get("/register", [RegisterController::class, "index"]);
 Route::get("/login", [LoginController::class, "index"]);
 
 Route::resource("/profile", ProfileController::class);
@@ -32,8 +31,8 @@ Route::resource("/recipes", RecipeController::class)->scoped(["recipe" => "slug"
 Route::prefix("admin")->group(function () {
     Route::get("/", [AdminHomeController::class, "index"]);
     Route::get("/dashboard", [AdminDashboardController::class, "index"]);
-    Route::resource("/age-categories", AdminNeedCategoryController::class);
-    Route::resource("/need-categories", FoodRecordController::class);
-    Route::resource("/need-sub-categories", AdminNeedSubCategoryController::class);
+    Route::resource("/age-categories", AdminAgeCategoryController::class);
+    Route::resource("/need-categories", AdminNeedCategoryController::class)->scoped(["need_category" => "slug"]);
+    Route::resource("/need-sub-categories", AdminNeedSubCategoryController::class)->scoped(["need_sub_category" => "slug"]);
     Route::resource("/recipes", AdminRecipeController::class)->scoped(["recipe" => "slug"]);
 });
