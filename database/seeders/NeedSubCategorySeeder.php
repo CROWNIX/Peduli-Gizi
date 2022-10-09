@@ -17,207 +17,258 @@ class NeedSubCategorySeeder extends Seeder
         $needSubCategories = [
             [
                 "need_category_id" => 1,
-                "category" => "Hidangan Sehat Ibu Hamil Triwulan Pertama",
+                "name" => "Hidangan Sehat Ibu Hamil Triwulan Pertama",
+                "slug" => "hidangan-sehat-ibu-hamil-triwulan-pertama"
             ],
             [
                 "need_category_id" => 1,
-                "category" => "Hidangan Sehat Ibu Hamil Triwulan Kedua",
+                "name" => "Hidangan Sehat Ibu Hamil Triwulan Kedua",
+                "slug" => "hidangan-sehat-ibu-hamil-triwulan-kedua"
             ],
             [
                 "need_category_id" => 1,
-                "category" => "Hidangan Sehat Ibu Hamil Triwulan Ketiga",
+                "name" => "Hidangan Sehat Ibu Hamil Triwulan Ketiga",
+                "slug" => "hidangan-sehat-ibu-hamil-triwulan-ketiga"
             ],
             [
                 "need_category_id" => 1,
-                "category" => "Hidangan Ideal Ibu Hamil",
+                "name" => "Hidangan Ideal Ibu Hamil",
+                "slug" => "hidangan-ideal-ibu-hamil"
             ],
             [
                 "need_category_id" => 2,
-                "category" => "Minuman Sehat",
+                "name" => "Minuman Sehat",
+                "slug" => "minuman-sehat"
             ],
             [
                 "need_category_id" => 2,
-                "category" => "Hidangan Serba Susu",
+                "name" => "Hidangan Serba Susu",
+                "slug" => "hidangan-serba-susu"
             ],
             [
                 "need_category_id" => 2,
-                "category" => "Sarapan Untuk Ibu Menyusui",
+                "name" => "Sarapan Untuk Ibu Menyusui",
+                "slug" => "sarapan-untuk-ibu-menyusui"
             ],
             [
                 "need_category_id" => 2,
-                "category" => "Hidangan Dari Kelapa Muda",
+                "name" => "Hidangan Dari Kelapa Muda",
+                "slug" => "hidangan-dari-kelapa-muda"
             ],
             [
                 "need_category_id" => 2,
-                "category" => "Snack",
+                "name" => "Snack",
+                "slug" => "snack"
             ],
             [
                 "need_category_id" => 2,
-                "category" => "Rendah Lemak dan gula",
+                "name" => "Rendah Lemak dan gula",
+                "slug" => "rendah-lemak-dan-gula"
             ],
             [
                 "need_category_id" => 2,
-                "category" => "Makanan Sehat Untuk ibu Menyusui",
+                "name" => "Makanan Sehat Untuk ibu Menyusui",
+                "slug" => "makanan-sehat-untuk-ibu-menyusui"
             ],
             [
                 "need_category_id" => 2,
-                "category" => "Menu Pasca Melahirkan",
+                "name" => "Menu Pasca Melahirkan",
+                "slug" => "menu-pasca-melahirkan"
             ],
             [
                 "need_category_id" => 3,
-                "category" => "Aneka Bubur",
+                "name" => "Aneka Bubur",
+                "slug" => "aneka-bubur"
             ],
             [
                 "need_category_id" => 3,
-                "category" => "Aneka Pure",
+                "name" => "Aneka Pure",
+                "slug" => "aneka-pure"
             ],
             [
                 "need_category_id" => 3,
-                "category" => "Aneka Tim",
+                "name" => "Aneka Tim",
+                "slug" => "aneka-tim"
             ],
             [
                 "need_category_id" => 3,
-                "category" => "Finger Food",
+                "name" => "Finger Food",
+                "slug" => "finger-food"
             ],
             [
                 "need_category_id" => 3,
-                "category" => "Minuman",
+                "name" => "Minuman",
+                "slug" => "minuman"
             ],
             [
                 "need_category_id" => 3,
-                "category" => "Aneka Kaldu",
+                "name" => "Aneka Kaldu",
+                "slug" => "aneka-kaldu"
             ],
             [
                 "need_category_id" => 4,
-                "category" => "Makanan Balita dan Batita",
+                "name" => "Makanan Balita dan Batita",
+                "slug" => "makanan-balita-dan-batita"
             ],
             [
                 "need_category_id" => 4,
-                "category" => "Kreasi Menarik Hidangan Anak",
+                "name" => "Kreasi Menarik Hidangan Anak",
+                "slug" => "kreasi-menarik-hidangan-anak"
             ],
             [
                 "need_category_id" => 4,
-                "category" => "Makanan Balita Tanpa Pengawet",
+                "name" => "Makanan Balita Tanpa Pengawet",
+                "slug" => "makanan-balita-tanpa-pengawet"
             ],
             [
                 "need_category_id" => 4,
-                "category" => "Omega 3",
+                "name" => "Omega 3",
+                "slug" => "-omega-2"
             ],
             [
                 "need_category_id" => 4,
-                "category" => "Autis",
+                "name" => "Autis",
+                "slug" => "autis"
             ],
             [
                 "need_category_id" => 4,
-                "category" => "Makanan Organik Untuk Balita",
+                "name" => "Makanan Organik Untuk Balita",
+                "slug" => "makanan-organik-untuk-balita"
             ],
             [
                 "need_category_id" => 5,
-                "category" => "Aneka Hidangan Sehat Untuk Anak",
+                "name" => "Aneka Hidangan Sehat Untuk Anak",
+                "slug" => "aneka-hidangan-sehat-untuk-anak"
             ],
             [
                 "need_category_id" => 5,
-                "category" => "Bekal Anak Sekolah Ala Bento",
+                "name" => "Bekal Anak Sekolah Ala Bento",
+                "slug" => "bekal-anak-sekolah-ala-bento"
             ],
             [
                 "need_category_id" => 6,
-                "category" => "Aneka Hidangan Utama",
+                "name" => "Aneka Hidangan Utama",
+                "slug" => "aneka-hidangan-utama"
             ],
             [
                 "need_category_id" => 6,
-                "category" => "Aneka Appetizer",
+                "name" => "Aneka Appetizer",
+                "slug" => "aneka-appetizer"
             ],
             [
                 "need_category_id" => 6,
-                "category" => "Aneka Salad",
+                "name" => "Aneka Salad",
+                "slug" => "aneka-salad"
             ],
             [
                 "need_category_id" => 6,
-                "category" => "Aneka Hidangan Kuah",
+                "name" => "Aneka Hidangan Kuah",
+                "slug" => "angka-hidangan-kuah"
             ],
             [
                 "need_category_id" => 6,
-                "category" => "Aneka Lauk",
+                "name" => "Aneka Lauk",
+                "slug" => "aneka-lauk"
             ],
             [
                 "need_category_id" => 6,
-                "category" => "Aneka Snack",
+                "name" => "Aneka Snack",
+                "slug" => "aneka-snack"
             ],
             [
                 "need_category_id" => 6,
-                "category" => "Aneka Dessert",
+                "name" => "Aneka Dessert",
+                "slug" => "aneka-dessert"
             ],
             [
                 "need_category_id" => 6,
-                "category" => "Aneka Minuman",
+                "name" => "Aneka Minuman",
+                "slug" => "aneka-minuman"
             ],
             [
                 "need_category_id" => 6,
-                "category" => "Aneka Sayur",
+                "name" => "Aneka Sayur",
+                "slug" => "aneka-sayur"
             ],
             [
                 "need_category_id" => 6,
-                "category" => "Vegetaris",
+                "name" => "Vegetaris",
+                "slug" => "vegetaris"
             ],
             [
                 "need_category_id" => 7,
-                "category" => "Dessert Menopause",
+                "name" => "Dessert Menopause",
+                "slug" => "dessert-menopause"
             ],
             [
                 "need_category_id" => 7,
-                "category" => "Minuman segar Menopause",
+                "name" => "Minuman segar Menopause",
+                "slug" => "minuman-segar-menopause"
             ],
             [
                 "need_category_id" => 7,
-                "category" => "Sarapan",
+                "name" => "Sarapan",
+                "slug" => "sarapan"
             ],
             [
                 "need_category_id" => 7,
-                "category" => "Lauk",
+                "name" => "Lauk",
+                "slug" => "lauk"
             ],
             [
                 "need_category_id" => 7,
-                "category" => "Healthy Juices",
+                "name" => "Healthy Juices",
+                "slug" => "healthy-juices"
             ],
             [
                 "need_category_id" => 7,
-                "category" => "Penyubur Pria dan Wanita",
+                "name" => "Penyubur Pria dan Wanita",
+                "slug" => "penyubur-pria-dan-wanita"
             ],
             [
                 "need_category_id" => 7,
-                "category" => "Aneka Hidangan Bergizi",
+                "name" => "Aneka Hidangan Bergizi",
+                "slug" => "aneka-hidangan-bergizi"
             ],
             [
                 "need_category_id" => 7,
-                "category" => "Hidangan Rendah Lemak",
+                "name" => "Hidangan Rendah Lemak",
+                "slug" => "hidangan-rendah-lemak"
             ],
             [
                 "need_category_id" => 7,
-                "category" => "Meningkatkan Daya Tahan Tubuh",
+                "name" => "Meningkatkan Daya Tahan Tubuh",
+                "slug" => "meningkatkan-daya-tahan-tubuh"
             ],
             [
                 "need_category_id" => 7,
-                "category" => "Menu Diare",
+                "name" => "Menu Diare",
+                "slug" => "menu-diare"
             ],
             [
                 "need_category_id" => 7,
-                "category" => "Sepinggan Rendah Garam",
+                "name" => "Sepinggan Rendah Garam",
+                "slug" => "sepingan-rendah-garam"
             ],
             [
                 "need_category_id" => 7,
-                "category" => "Low Cholesterol",
+                "name" => "Low Cholesterol",
+                "slug" => "low-cholesterol"
             ],
             [
                 "need_category_id" => 7,
-                "category" => "Menu Rendah Gula",
+                "name" => "Menu Rendah Gula",
+                "slug" => "menu-rendah-gula"
             ],
             [
                 "need_category_id" => 7,
-                "category" => "Hidangan Pesta Untuk Menjaga Berat Badan",
+                "name" => "Hidangan Pesta Untuk Menjaga Berat Badan",
+                "slug" => "hidangan-pesta-untuk-menjaga-berat-badan"
             ],
             [
                 "need_category_id" => 7,
-                "category" => "Hidangan Organik Ala Resto",
+                "name" => "Hidangan Organik Ala Resto",
+                "slug" => "hidangan-organik-ala-resto"
             ],
         ];
         

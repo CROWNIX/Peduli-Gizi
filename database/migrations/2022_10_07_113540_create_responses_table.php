@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResponseTable extends Migration
+class CreateResponsesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateResponseTable extends Migration
      */
     public function up()
     {
-        Schema::create('response', function (Blueprint $table) {
+        Schema::create('responses', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id")->constrained();
             $table->foreignId("recipe_id")->constrained();
@@ -29,6 +29,6 @@ class CreateResponseTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('response');
+        Schema::dropIfExists('responses');
     }
 }

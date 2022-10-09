@@ -10,7 +10,7 @@
 
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-    <title>Peduli Gizi</title>
+    <title>{{ $title }}</title>
 </head>
 
 <body>
@@ -118,51 +118,23 @@
 
         <div class="my-8 grid grid-cols-3 gap-6">
             {{-- daftar produk --}}
+            @foreach ($recipes as $recipe)
             <div class="rounded-xl bg-gradient-to-b p-[6px] from-[#F58634] to-[#69B550] shadow-lg">
                 <div class="flex flex-col justify-between h-full bg-white rounded-lg p-4">
                     <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk" class="w-full">
                     <div class="title text-xl font-bold text-black my-2">
-                        Sego Tumpang Komplit
+                        {{ $recipe->title }}
                     </div>
-                    <p class="text-lg font-extralight my-2 text-black">Gizi per porsi</p>
+                    <p class="text-md font-extralight my-2 text-black">Gizi per porsi</p>
                     <div class="grid grid-cols-2 gap-4">
-                        <p class="text-lg font-normal my-0 text-black">Energi : 151 kalori</p>
-                        <p class="text-lg font-normal my-0 text-black">Protein : 11,4 g</p>
-                        <p class="text-lg font-normal my-0 text-black">Lemak : 5,6 g</p>
-                        <p class="text-lg font-normal my-0 text-black">Karbohidrat : 18,5 g</p>
+                        <p class="text-md font-normal my-0 text-black">Energi : {{ $recipe->energy }} kalori</p>
+                        <p class="text-md font-normal my-0 text-black">Protein : {{ $recipe->protein }} g</p>
+                        <p class="text-md font-normal my-0 text-black">Lemak : {{ $recipe->fat }} g</p>
+                        <p class="text-md font-normal my-0 text-black">Karbohidrat : {{ $recipe->carbohydrate }} g</p>
                     </div>
                 </div>
-            </div>
-            <div class="rounded-xl bg-gradient-to-b p-[6px] from-[#69B550] to-[#F58634] shadow-lg">
-                <div class="flex flex-col justify-between h-full bg-white rounded-lg p-4">
-                    <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk" class="w-full">
-                    <div class="title text-xl font-bold text-black my-2">
-                        Sego Tumpang Komplit
-                    </div>
-                    <p class="text-lg font-extralight my-2 text-black">Gizi per porsi</p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <p class="text-lg font-normal my-0 text-black">Energi : 151 kalori</p>
-                        <p class="text-lg font-normal my-0 text-black">Protein : 11,4 g</p>
-                        <p class="text-lg font-normal my-0 text-black">Lemak : 5,6 g</p>
-                        <p class="text-lg font-normal my-0 text-black">Karbohidrat : 18,5 g</p>
-                    </div>
-                </div>
-            </div>
-            <div class="rounded-xl bg-gradient-to-b p-[6px] from-[#F58634] to-[#69B550] shadow-lg">
-                <div class="flex flex-col justify-between h-full bg-white rounded-lg p-4">
-                    <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk" class="w-full">
-                    <div class="title text-xl font-bold text-black my-2">
-                        Sego Tumpang Komplit
-                    </div>
-                    <p class="text-lg font-extralight my-2 text-black">Gizi per porsi</p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <p class="text-lg font-normal my-0 text-black">Energi : 151 kalori</p>
-                        <p class="text-lg font-normal my-0 text-black">Protein : 11,4 g</p>
-                        <p class="text-lg font-normal my-0 text-black">Lemak : 5,6 g</p>
-                        <p class="text-lg font-normal my-0 text-black">Karbohidrat : 18,5 g</p>
-                    </div>
-                </div>
-            </div>
+            </div>             
+            @endforeach
         </div>
         <button
             class="shadow-lg text-4xl font-extrabold text-white bg-green-500 hover:bg-white hover:text-green-500 duration-500 hover:outline hover:outline-4 hover:outline-green-500 capitalize rounded-xl py-2 px-14">

@@ -16,7 +16,8 @@ class CreateNeedSubCategoriesTable extends Migration
         Schema::create('need_sub_categories', function (Blueprint $table) {
             $table->id();
             $table->foreignId("need_category_id")->constrained();
-            $table->string("category");
+            $table->string("name");
+            $table->string("slug")->unique();
             $table->timestamps();
         });
     }

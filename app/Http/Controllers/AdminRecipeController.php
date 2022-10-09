@@ -2,83 +2,108 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NeedSubCategory;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
-class AdminRecipeController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return "admin recipe";
+class AdminRecipeController extends Controller{
+    public function index(){        
+        return view("", [
+            "recipes" => Recipe::all(),
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function create(){
+        return view("", [
+            "needSubCategories" => NeedSubCategory::all()
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        $rules = [
+            "need_sub_category_id" => "required",
+            "title" => "required|max:255",
+            "slug" => "required|unique:recipes",
+            "image" => "image|file",
+            "ingridients" => "required",
+            "steps" => "required",
+            "portion" => "required",
+            "energy" => "required",
+            "protein" => "required",
+            "fat" => "required",
+            "carbohydrate" => "required"
+        ];
+
+        $validatedData = $request->validate($rules);
+        if($request->file("image")){
+            $validatedData["image"] = $request->file("image")->store("images/recipes");
+        }
+        Recipe::create($validatedData);
+
+        return redirect("/admin/recipes")->with("success", "Recipe has beed added");
+         
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    public function show(Recipe $recipe){
+        return view("", [
+            "recipe" => $recipe
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function edit(Recipe $recipe){
+        return view("", [
+            "recipe" => $recipe,
+            "needSubCategories" => NeedSubCategory::all()
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, Recipe $recipe){
+        $rules = [
+            "need_sub_category_id" => "required",
+            "title" => "required|max:255",
+            "image" => "image|file",
+            "ingridients" => "required",
+            "steps" => "required",
+            "portion" => "required",
+            "energy" => "required",
+            "protein" => "required",
+            "fat" => "required",
+            "carbohydrate" => "required"
+        ];
+
+        if($recipe->slug != $request->slug){
+            $rules["slug"] = "required|unique:recipes";
+        }
+
+        $validatedData = $request->validate($rules);
+        if($request->file("image")){
+            if($recipe->image != "default.jpg"){
+                Storage::delete($recipe->image);
+            }
+
+            $validatedData["image"] = $request->file("image")->store("images/recipes");
+        }
+
+        $recipe->update($validatedData);
+
+        return redirect("/admin/recipes")->with("success", "Recipe has beed updated");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Recipe $recipe){
+        if($recipe->image != "default.jpg"){
+            Storage::delete($recipe->image);
+        }
+
+        $recipe->delete();
+
+        return redirect("/admin/recipes")->with("success", "Recipe has beed deleted");
+    }
+
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Recipe::class, 'slug', $request->name);
+
+        return response()->json(["slug" => $slug]);
     }
 }

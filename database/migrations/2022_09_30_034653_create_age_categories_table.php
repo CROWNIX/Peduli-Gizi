@@ -15,7 +15,7 @@ class CreateAgeCategoriesTable extends Migration
     {
         Schema::create('age_categories', function (Blueprint $table) {
             $table->id();
-            $table->string("category");
+            $table->string("name");
             $table->timestamps();
         });
     }
