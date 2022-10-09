@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Recipe extends Model
 {
     use HasFactory;
+    use Sluggable;
 
     protected $guarded = ["id"];
     protected $with = ["needSubCategory"];
@@ -26,5 +28,14 @@ class Recipe extends Model
 
     public function review(){
         return $this->hasMany(Review::class);
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }

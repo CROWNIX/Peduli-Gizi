@@ -32,7 +32,10 @@ Route::prefix("admin")->group(function () {
     Route::get("/", [AdminHomeController::class, "index"]);
     Route::get("/dashboard", [AdminDashboardController::class, "index"]);
     Route::resource("/age-categories", AdminAgeCategoryController::class);
+    Route::get("/need-categories/check-slug", [AdminNeedCategoryController::class, "checkSlug"]);
     Route::resource("/need-categories", AdminNeedCategoryController::class)->scoped(["need_category" => "slug"]);
+    Route::get("/need-sub-categories/check-slug", [AdminNeedSubCategoryController::class, "checkSlug"]);
     Route::resource("/need-sub-categories", AdminNeedSubCategoryController::class)->scoped(["need_sub_category" => "slug"]);
+    Route::get("/recipes/check-slug", [AdminRecipeController::class, "checkSlug"]);
     Route::resource("/recipes", AdminRecipeController::class)->scoped(["recipe" => "slug"]);
 });

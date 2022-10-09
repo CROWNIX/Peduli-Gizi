@@ -6,6 +6,7 @@ use App\Models\NeedSubCategory;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class AdminRecipeController extends Controller{
     public function index(){        
@@ -98,5 +99,11 @@ class AdminRecipeController extends Controller{
         $recipe->delete();
 
         return redirect("/admin/recipes")->with("success", "Recipe has beed deleted");
+    }
+
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Recipe::class, 'slug', $request->name);
+
+        return response()->json(["slug" => $slug]);
     }
 }

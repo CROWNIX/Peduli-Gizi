@@ -6,6 +6,7 @@ use App\Models\NeedCategory;
 use App\Models\NeedSubCategory;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class AdminNeedSubCategoryController extends Controller{
     public function index(){        
@@ -63,5 +64,11 @@ class AdminNeedSubCategoryController extends Controller{
         $needSubCategory->delete();
         
         return redirect("/admin/need-sub-categories")->with("Need Sub Category has been deleted");
+    }
+
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(NeedSubCategory::class, 'slug', $request->name);
+
+        return response()->json(["slug" => $slug]);
     }
 }

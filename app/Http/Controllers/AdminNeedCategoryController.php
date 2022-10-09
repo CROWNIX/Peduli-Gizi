@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\NeedCategory;
 use Illuminate\Http\Request;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class AdminNeedCategoryController extends Controller{
     public function index(){        
@@ -57,5 +58,11 @@ class AdminNeedCategoryController extends Controller{
         $needCategory->delete();
 
         return redirect("/admin/need-categories")->with("success", "Need category has beed deleted");
+    }
+
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(NeedCategory::class, 'slug', $request->title);
+
+        return response()->json(["slug" => $slug]);
     }
 }
