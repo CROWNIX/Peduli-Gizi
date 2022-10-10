@@ -6,7 +6,6 @@ use App\Http\Controllers\FamilyRecipeController;
 use App\Http\Controllers\FoodRecordController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminAgeCategoryController;
 use App\Http\Controllers\AdminRecipeController;
 use App\Http\Controllers\AdminNeedCategoryController;
@@ -14,13 +13,15 @@ use App\Http\Controllers\AdminNeedSubCategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminDashboardController;
-
-
+use App\Http\Controllers\GoogleController;
 
 Route::get("/", [HomeController::class, "index"]);
 
 //* Authentication 
 Route::get("/login", [LoginController::class, "index"]);
+Route::get("/login/google", [GoogleController::class, "login"]);
+Route::get("/login/google/callback", [GoogleController::class, "callback"]);
+Route::post("/logout", [LoginController::class, "logout"]);
 
 Route::resource("/profile", ProfileController::class);
 Route::resource("/food-records", FoodRecordController::class);
