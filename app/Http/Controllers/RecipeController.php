@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 
 class RecipeController extends Controller{
     public function index(){
-        $recipes = Recipe::latest()->get();
-        dd($recipes);
+        return view("", [
+            "recipes" => Recipe::latest()->get()
+        ]);
     }
 
     public function create(){
@@ -20,7 +21,9 @@ class RecipeController extends Controller{
     }
 
     public function show(Recipe $recipe){
-        dd($recipe);
+        return view("", [
+            "recipe" => $recipe
+        ]);
     }
 
     public function edit($id){

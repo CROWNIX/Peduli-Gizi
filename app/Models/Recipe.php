@@ -22,6 +22,10 @@ class Recipe extends Model
         return $this->hasMany(FoodRecord::class);
     }
 
+    public function familyRecipe(){
+        return $this->hasMany(FamilyRecipe::class);
+    }
+
     public function response(){
         return $this->hasMany(Response::class);
     }
