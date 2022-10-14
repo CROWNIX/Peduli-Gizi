@@ -5,30 +5,39 @@
         <nav class="bg-white fixed bottom-0 left-0 right-0 text-[#727272]">
             <div class="grid grid-cols-5 justify-center p-3">
                 <div class="text-center">
-                    <span class="material-icons-outlined bg-white rounded-full p-2" style="font-size:32px">
+                    <a href="/search"
+                        class="material-icons-outlined {{ request()->is('search') ? 'text-white bg-[#F58634]' : 'bg-white' }}  rounded-full p-2"
+                        style="font-size:32px">
                         search
-                    </span>
+                    </a>
                 </div>
                 <div class="text-center">
-                    <span class="material-icons-outlined bg-white rounded-full p-2" style="font-size:32px">
+                    <a href="/recipes"
+                        class="material-icons-outlined {{ request()->is('recipes') ? 'text-white bg-[#F58634]' : 'bg-white' }} rounded-full p-2"
+                        style="font-size:32px">
                         receipt_long
-                    </span>
+                    </a>
                 </div>
                 <div class="text-center">
-                    <span class="material-icons-outlined text-white bg-[#F58634] rounded-full p-2"
+                    <a href="/beranda"
+                        class="material-icons-outlined {{ request()->is('beranda') ? 'text-white bg-[#F58634]' : 'bg-white' }} rounded-full p-2"
                         style="font-size:32px">
                         home
-                    </span>
+                    </a>
                 </div>
                 <div class="text-center">
-                    <span class="material-icons-outlined bg-white rounded-full p-2" style="font-size:32px">
+                    <a href="/food-records"
+                        class="material-icons-outlined {{ request()->is('food-records') ? 'text-white bg-[#F58634]' : 'bg-white' }} rounded-full p-2"
+                        style="font-size:32px">
                         history
-                    </span>
+                    </a>
                 </div>
                 <div class="text-center">
-                    <span class="material-icons-outlined bg-white rounded-full p-2" style="font-size:32px">
+                    <a href="/profile"
+                        class="material-icons-outlined {{ request()->is('profile') ? 'text-white bg-[#F58634]' : 'bg-white' }} rounded-full p-2"
+                        style="font-size:32px">
                         person_outline
-                    </span>
+                    </a>
                 </div>
             </div>
         </nav>
@@ -78,22 +87,13 @@
             <h3 class="text-xl ml-2">Resep Makanan Sehat</h3>
             <div class="swiper resep-makanan my-2">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide flex justify-center items-center flex-col bg-[#FFF2F0] p-4 rounded-3xl">
-                        <img src="{{ asset('images/produk/resep-1.png') }}">
-                        <p class="text-base text-[#4D0A00]">Jus Sayur</p>
-                    </div>
-                    <div class="swiper-slide flex justify-center items-center flex-col bg-[#EFF7EE] p-4 rounded-3xl">
-                        <img src="{{ asset('images/produk/resep-1.png') }}">
-                        <p class="text-base text-[#4D0A00]">Jus Sayur</p>
-                    </div>
-                    <div class="swiper-slide flex justify-center items-center flex-col bg-[#FFF2F0] p-4 rounded-3xl">
-                        <img src="{{ asset('images/produk/resep-1.png') }}">
-                        <p class="text-base text-[#4D0A00]">Jus Sayur</p>
-                    </div>
-                    <div class="swiper-slide flex justify-center items-center flex-col bg-[#EFF7EE] p-4 rounded-3xl">
-                        <img src="{{ asset('images/produk/resep-1.png') }}">
-                        <p class="text-base text-[#4D0A00]">Jus Sayur</p>
-                    </div>
+                    @foreach ($recipes as $recipe)
+                        <div class="swiper-slide flex justify-center items-center flex-col bg-[#FFF2F0] p-4 rounded-3xl"
+                            onclick="window.location.href = '/recipes/{{ $recipe->slug }}'">
+                            <img src="{{ asset('images/produk/resep-1.png') }}">
+                            <p class="text-base text-[#4D0A00]"> {{ $recipe->title }}</p>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -142,10 +142,10 @@
                         sebagainya.</p>
                     <p class="text-lg my-4">Pastikan gizimu tercukupi setiap hari dengan mudah bersama kami.</p>
 
-                    <button
+                    <a href="/search"
                         class="cursor-pointer bg-green-500 mb-4 py-2 px-6 rounded-xl text-white text-lg capitalize font-extrabold font-[poppins]">
                         explore
-                    </button>
+                    </a>
 
                     <div class="swiper mySwiper mt-8">
                         <div class="swiper-wrapper">
@@ -215,8 +215,8 @@
             <div class="my-8 grid grid-cols-3 gap-6">
                 {{-- daftar produk --}}
                 @foreach ($recipes as $recipe)
-                    <div
-                        class="rounded-xl bg-gradient-to-b p-[6px] from-[#F58634] to-[#69B550] shadow-lg cursor-pointer hover:from-[#69B550] hover:to-[#F58634] duration-200 hover:scale-105">
+                    <div class="rounded-xl bg-gradient-to-b p-[6px] from-[#F58634] to-[#69B550] shadow-lg cursor-pointer hover:from-[#69B550] hover:to-[#F58634] duration-200 hover:scale-105"
+                        onclick="window.location.href = '/recipes/{{ $recipe->slug }}'">
                         <div class="flex flex-col justify-between h-full bg-white rounded-lg p-4">
                             <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk"
                                 class="w-full">

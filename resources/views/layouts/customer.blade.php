@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('images/logo/navbar.svg') }}" type="image/x-icon">
-
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <title>{{ $title }}</title>
@@ -32,7 +32,7 @@
             grid: {
                 rows: 1,
             },
-            spaceBetween: 30,
+            spaceBetween: 10,
         });
     </script>
 </body>

@@ -27,7 +27,8 @@ class RecipeController extends Controller
 
     public function show(Recipe $recipe)
     {
-        return view("", [
+        return view("detail-recipes", [
+            'title' => $recipe->title,
             "recipe" => $recipe
         ]);
     }

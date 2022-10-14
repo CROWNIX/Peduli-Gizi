@@ -1,7 +1,7 @@
 <x-customer title="{{ $title }}">
     @component('components.navbar')
     @endcomponent
-    <section class="p-4">
+    <section class="p-4 fixed top-0 right-0 left-0 bg-white">
         <form>
             <label for="default-search"
                 class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
@@ -19,48 +19,30 @@
     </section>
 
     {{-- Daftar Resep --}}
-    <section class="px-4">
+    <section class="px-4 mt-24">
         <h2 class="text-xl font-bold">Daftar Resep Sehat & Bergizi</h2>
-        <div class="grid grid-cols-2 gap-2 mt-2">
-            <div
-                class="rounded-xl bg-gradient-to-b p-[3px] from-[#F58634] to-[#69B550] shadow-lg cursor-pointer hover:from-[#69B550] hover:to-[#F58634] duration-200 hover:scale-95">
-                <div class="flex flex-col justify-between h-full bg-white rounded-lg p-2">
-                    <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk" class="w-full">
-                    <div class="title text-base font-bold text-black my-2">
-                        Title
-                    </div>
-                    <p class="text-xs font-extralight text-black">Gizi per porsi</p>
-                    <div class="grid grid-cols-2 gap-0">
-                        <p class="text-2xs font-normal my-0 text-black">Energi : 141 kalori
-                        </p>
-                        <p class="text-2xs font-normal my-0 text-black">Protein : 2,8 g</p>
-                        <p class="text-2xs font-normal my-0 text-black">Lemak : 14,9 g</p>
-                        <p class="text-2xs font-normal my-0 text-black">Karbohidrat :
-                            9,2 g
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div
-                class="rounded-xl bg-gradient-to-b p-[3px] from-[#F58634] to-[#69B550] shadow-lg cursor-pointer hover:from-[#69B550] hover:to-[#F58634] duration-200 hover:scale-95">
-                <div class="flex flex-col justify-between h-full bg-white rounded-lg p-2">
-                    <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk" class="w-full">
-                    <div class="title text-base font-bold text-black my-2">
-                        Title
-                    </div>
-                    <p class="text-xs font-extralight text-black">Gizi per porsi</p>
-                    <div class="grid grid-cols-2 gap-0">
-                        <p class="text-2xs font-normal my-0 text-black">Energi : 141 kalori
-                        </p>
-                        <p class="text-2xs font-normal my-0 text-black">Protein : 2,8 g</p>
-                        <p class="text-2xs font-normal my-0 text-black">Lemak : 14,9 g</p>
-                        <p class="text-2xs font-normal my-0 text-black">Karbohidrat :
-                            9,2 g
-                        </p>
+        <div class="grid grid-cols-2 gap-2 mt-2 overflow-y-scroll overflow-x-hidden py-2" style="height: 65vh;">
+            @foreach ($recipes as $recipe)
+                <div class="rounded-xl bg-gradient-to-b p-[3px] from-[#F58634] to-[#69B550] shadow-lg cursor-pointer hover:from-[#69B550] hover:to-[#F58634] duration-200 hover:scale-95"
+                    onclick="window.location.href = '/recipes/{{ $recipe->slug }}'">
+                    <div class="flex flex-col justify-between h-full bg-white rounded-lg p-2">
+                        <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk" class="w-full">
+                        <div class="title text-base font-bold text-black my-2">
+                            {{ $recipe->title }}
+                        </div>
+                        <p class="text-xs font-extralight text-black">Gizi per porsi</p>
+                        <div class="grid grid-cols-2 gap-0">
+                            <p class="text-2xs font-normal my-0 text-black">Energi : {{ $recipe->energy }} kalori
+                            </p>
+                            <p class="text-2xs font-normal my-0 text-black">Protein : {{ $recipe->protein }} g</p>
+                            <p class="text-2xs font-normal my-0 text-black">Lemak : {{ $recipe->fat }} g</p>
+                            <p class="text-2xs font-normal my-0 text-black">Karbohidrat :
+                                {{ $recipe->carbohydrate }} g
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
+            @endforeach
         </div>
     </section>
     {{-- End Daftar Resep --}}
