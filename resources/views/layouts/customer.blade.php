@@ -11,6 +11,8 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <title>{{ $title }}</title>
 </head>
 
@@ -18,23 +20,6 @@
 
     {{ $slot }}
 
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Initialize Swiper -->
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            effect: "cards",
-            grabCursor: true,
-        });
-        var resep = new Swiper(".resep-makanan", {
-            slidesPerView: 2,
-            grid: {
-                rows: 1,
-            },
-            spaceBetween: 10,
-        });
-    </script>
 </body>
 
 </html>

@@ -374,4 +374,18 @@
             </div>
         </footer>
     </section>
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "cards",
+            grabCursor: true,
+        });
+        var resep = new Swiper(".resep-makanan", {
+            slidesPerView: 2,
+            grid: {
+                rows: 1,
+            },
+            spaceBetween: 10,
+        });
+    </script>
 </x-customer>
