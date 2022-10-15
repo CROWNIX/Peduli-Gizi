@@ -34,7 +34,16 @@ Aplikasi yang membantu anda mencukupi gizi sehari-hari
 Peduli Gizi dibuat dengan 
 
 * [Laravel](https://laravel.com/)
+* [Tailwindcss](https://tailwindcss.com/)
 * [Mysql](https://mysql.com/)
+
+### Library
+
+Peduli Gizi Menggunakan Library
+* [Swipper.js](https://swiperjs.com/)
+* [Google Font](https://fonts.google.com/)
+* [Jquery](https://jquery.com/)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
