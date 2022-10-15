@@ -16,7 +16,11 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\SearchController;
 
-Route::get("/", [HomeController::class, "index"]);
+Route::get("/", function () {
+    return redirect('/beranda');
+});
+
+Route::get("/beranda", [HomeController::class, "index"]);
 
 //* Authentication 
 Route::get("/login", [LoginController::class, "index"]);
