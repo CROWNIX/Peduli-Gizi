@@ -1,8 +1,0 @@
-.hero::before {
-    content: "";
-    background-image: url('/public/images/content/hero.svg');
-}
-
-body{
-    background: black;
-}
