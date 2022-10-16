@@ -33,7 +33,7 @@ class GoogleController extends Controller{
             ]);
             
             Auth::login($user);
-            return redirect("/");
+            return redirect("/beranda");
         } catch (\Throwable $th) {
             abort(404);
         }

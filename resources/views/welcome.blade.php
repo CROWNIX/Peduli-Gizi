@@ -122,11 +122,15 @@
                     <a href="#" class="text-xl hover:text-[#F58634] duration-200 capitalize">kontak</a>
                 </li>
             </ul>
-            <a href="/login"
+            @auth
+            @else
+                <a href="/login"
                 class="outline outline-[#F58634] text-[#F58634] capitalize bg-white font-[Poppins] font-bold text-xl duration-500 px-8 py-1 mx-4 hover:bg-[#F58634] hover:text-white hover:outline-white rounded cursor-pointer"
                 style="border-radius: 16px 32px 0px 16px">
                 masuk / daftar
-            </a>
+                </a>
+            @endauth
+                  
         </nav>
         {{-- Bagian Hero Section --}}
         <section class="invisible md:visible hero relative overflow-hidden">

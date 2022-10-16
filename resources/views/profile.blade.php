@@ -10,7 +10,7 @@
         <div class="bg-gray-400 text-white w-48 h-48 rounded-full flex justify-center items-center text-3xl">
             R
         </div>
-        <p class="text-2xl my-3">Rully</p>
+        <p class="text-2xl my-3 text-center">{{ auth()->user()->name }}</p>
     </section>
     {{-- End foto profile --}}
 

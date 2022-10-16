@@ -11,7 +11,7 @@ class RecipeController extends Controller
     {
         return view("recipes", [
             'title' => "Resep Makanan Bergizi",
-            "recipes" => Recipe::latest()->get()
+            "recipes" => Recipe::latest()->filter()->get()
         ]);
     }
 

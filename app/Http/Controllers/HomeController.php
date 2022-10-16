@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index(){
         return view('welcome', [
-            "title" => "Peduli Gizi | Home",
+            "title" => "Home",
             "recipes" => Recipe::limit(3)->get()
         ]);
     }
