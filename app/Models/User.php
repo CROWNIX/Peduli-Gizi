@@ -45,4 +45,5 @@ class User extends Authenticatable
     public function familyRecipe(){
         return $this->hasMany(FamilyRecipe::class);
     }
+
 }

@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->foreignId("role_id")->default(2)->constrained();
             $table->foreignId("user_need_id")->nullable()->constrained();
             $table->string("name");
+            $table->string("username")->unique();
             $table->string("email")->unique();
             $table->enum("gender", ["laki-laki", "perempuan"])->nullable();
             $table->integer("age")->nullable();

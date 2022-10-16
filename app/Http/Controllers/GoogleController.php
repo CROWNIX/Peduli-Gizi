@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Str;
+
 
 class GoogleController extends Controller{
     public function login(){
@@ -15,6 +17,8 @@ class GoogleController extends Controller{
         try {
             $googleUser = Socialite::driver("google")->user();
             $user = User::where("email", $googleUser->email)->first();
+            
+            $username = Str::slug($googleUser->name, '-');
 
             if($user){
                 Auth::login($user);
@@ -26,8 +30,9 @@ class GoogleController extends Controller{
                 return redirect("/");
             }
             
-            User::create([
+            $user = User::create([
                 "name" => ucwords($googleUser->name),
+                "username" => $username,
                 "email" => $googleUser->email,
                 "image" => $googleUser->avatar,
             ]);
@@ -35,6 +40,7 @@ class GoogleController extends Controller{
             Auth::login($user);
             return redirect("/beranda");
         } catch (\Throwable $th) {
+            dd($th);
             abort(404);
         }
     }
