@@ -16,9 +16,13 @@ class CreateFamiliesTable extends Migration
         Schema::create('families', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id")->constrained();
-            $table->integer("total_toddler");
-            $table->integer("total_teens");
-            $table->integer("total_adult");
+            $table->foreignId("user_need_id")->constrained();
+            $table->string("name");
+            $table->enum("gender", ["laki-laki", "perempuan"]);
+            $table->integer("age")->nullable();
+            $table->integer("weight")->nullable();
+            $table->integer("height")->nullable();
+            $table->text("image")->default("default.jpg");
             $table->timestamps();
         });
     }

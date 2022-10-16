@@ -31,8 +31,8 @@ Route::post("/logout", [LoginController::class, "logout"]);
 
 //* Route User 
 Route::get("/search", [SearchController::class, "index"]);
-Route::get("/search/age", [SearchController::class, "age"]);
-Route::get("/search/{needCategory:slug}", [SearchController::class, "needCategory"]);
+// Route::get("/search/age", [SearchController::class, "age"]);
+// Route::get("/search/{needCategory:slug}", [SearchController::class, "needCategory"]);
 Route::resource("/profile", ProfileController::class);
 Route::resource("/family", FamilyController::class)->scoped(["family" => "name"]);
 Route::resource("/food-records", FoodRecordController::class);
