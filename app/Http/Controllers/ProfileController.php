@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\UserNeed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -46,6 +47,7 @@ class ProfileController extends Controller
             "user_need_id" => "required",
             "age" => "required",
             "gender" => "required",
+            "image" => "image|file"
         ];
 
         if(!$request->name){
@@ -55,12 +57,16 @@ class ProfileController extends Controller
         }
 
         $validatedData = $request->validate($rules);
-        $validatedData["weight"] = $request->weight;
-        $validatedData["height"] = $request->height ?? 151;
 
-        if(!$validatedData["weight"]){
-            $validatedData["weight"] = $request->gender == "laki-laki" ? 61 : 56;
-        } 
+        if($request->name){
+            $validatedData["weight"] = $request->weight;
+            $validatedData["height"] = $request->height ?? 151;
+            $validatedData["username"] = Str::slug($request->name, '-');
+    
+            if(!$validatedData["weight"]){
+                $validatedData["weight"] = $request->gender == "laki-laki" ? 61 : 56;
+            } 
+        }
 
         if($request->file("image")){
             if($user->image != "default.jpg"){
