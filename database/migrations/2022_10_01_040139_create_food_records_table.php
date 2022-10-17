@@ -15,7 +15,8 @@ class CreateFoodRecordsTable extends Migration
     {
         Schema::create('food_records', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id")->constrained();
+            $table->foreignId("user_id")->nullable()->constrained();
+            $table->foreignId("family_id")->nullable()->constrained();
             $table->foreignId("recipe_id")->constrained();
             $table->string("day");
             $table->enum("time", ["pagi", "siang", "malam"]);

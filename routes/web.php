@@ -34,7 +34,7 @@ Route::get("/search", [SearchController::class, "index"]);
 // Route::get("/search/age", [SearchController::class, "age"]);
 // Route::get("/search/{needCategory:slug}", [SearchController::class, "needCategory"]);
 Route::resource("/users", ProfileController::class)->scoped(["user" => "username"]);
-Route::resource("/families", FamilyController::class)->scoped(["family" => "name"]);
+Route::resource("/families", FamilyController::class);
 Route::resource("/food-records", FoodRecordController::class);
 Route::resource("/family-recipes", FamilyRecipeController::class);
 Route::resource("/recipes", RecipeController::class)->scoped(["recipe" => "slug"]);

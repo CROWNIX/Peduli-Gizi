@@ -17,14 +17,18 @@ class FamilyController extends Controller
 
     public function create()
     {
-        
+        return view("test");
     }
 
     public function store(Request $request)
     {
+        $checkName = Family::where("user_id", auth()->user()->id)->where("name", $request->name)->first();
+
+        $ruleName = $checkName ? "required|unique" : "required";
+
         $rules = [
             "user_need_id" => "required",
-            "name" => "required",
+            "name" => $ruleName,
             "gender" => "required",
             "age" => "required",
             "image" => "image|file"
@@ -105,6 +109,6 @@ class FamilyController extends Controller
             ->where("name", $family->name)
             ->delete();
 
-         return redirect("/families")->with("success", "Family has been deleted");
+        return redirect("/families")->with("success", "Family has been deleted");
     }
 }

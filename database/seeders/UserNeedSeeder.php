@@ -27,6 +27,10 @@ class UserNeedSeeder extends Seeder
                 "name" => "Menopause",
                 "slug" => "menopause"
             ],
+            [
+                "name" => "Normal",
+                "slug" => "normal"
+            ]
         ];
         
         DB::table("user_needs")->insert($userNeeds);
