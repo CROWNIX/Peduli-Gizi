@@ -33,7 +33,7 @@ class ProfileController extends Controller
 
     public function edit(User $user)
     {
-        return view("test", [
+        return view("", [
             "userNeeds" => UserNeed::all(),
             "user" => $user
         ]);

@@ -17,7 +17,7 @@ class FamilyController extends Controller
 
     public function create()
     {
-        return view("test");
+        return view("");
     }
 
     public function store(Request $request)
@@ -53,15 +53,27 @@ class FamilyController extends Controller
 
     public function show($name)
     {
+        $famiily = Family::where("user_id", auth()->user()->id)->where("name", $name)->first();
+
+        if(!$famiily){
+            abort(404);
+        }
+
         return view("", [
-            "family" => Family::where("user_id", auth()->user()->id)->where("name", $name)->first()
+            "family" => $famiily
         ]);
     }
 
     public function edit($name)
     {
+        $famiily = Family::where("user_id", auth()->user()->id)->where("name", $name)->first();
+
+        if(!$famiily){
+            abort(404);
+        }
+
         return view("", [
-            "family" => Family::where("user_id", auth()->user()->id)->where("name", $name)->first()
+            "family" => $famiily
         ]);
     }
 
