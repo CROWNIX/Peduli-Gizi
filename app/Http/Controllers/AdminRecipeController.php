@@ -40,6 +40,7 @@ class AdminRecipeController extends Controller{
         if($request->file("image")){
             $validatedData["image"] = $request->file("image")->store("images/recipes");
         }
+        
         Recipe::create($validatedData);
 
         return redirect("/admin/recipes")->with("success", "Recipe has beed added");

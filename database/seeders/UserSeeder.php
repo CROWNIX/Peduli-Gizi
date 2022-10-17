@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
             [
                 "role_id" => 1,
                 "name" => "Rahmat Fauzi widianto",
+                "username" => "rahmat-fauzi-widianto",
                 "email" => "rahmatfauzi841@gmail.com",
                 "age" => 20,
                 "gender" => "laki-laki",

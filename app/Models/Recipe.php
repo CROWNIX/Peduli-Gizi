@@ -14,6 +14,19 @@ class Recipe extends Model
     protected $guarded = ["id"];
     protected $with = ["needSubCategory"];
 
+    public function scopeFilter($query){
+        $keyword = request("search");
+
+        if($keyword){
+            return $query->where("title", "%" . $keyword . "%")
+                        ->orWhere("ingridients", "like", "%" . $keyword . "%");
+        }
+    }
+
+    public function scopePopular(){
+
+    }
+    
     public function needSubCategory(){
         return $this->belongsTo(NeedSubCategory::class);
     }

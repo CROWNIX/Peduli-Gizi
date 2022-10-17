@@ -15,6 +15,10 @@ class FoodRecord extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function family(){
+        return $this->belongsTo(Family::class);
+    }
+
     public function recipe(){
         return $this->belongsTo(Recipe::class);
     }

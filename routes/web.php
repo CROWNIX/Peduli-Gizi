@@ -13,6 +13,7 @@ use App\Http\Controllers\AdminNeedSubCategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminHomeController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\SearchController;
 
@@ -30,9 +31,10 @@ Route::post("/logout", [LoginController::class, "logout"]);
 
 //* Route User 
 Route::get("/search", [SearchController::class, "index"]);
-Route::get("/search/age", [SearchController::class, "age"]);
-Route::get("/search/{needCategory:slug}", [SearchController::class, "needCategory"]);
-Route::resource("/profile", ProfileController::class);
+// Route::get("/search/age", [SearchController::class, "age"]);
+// Route::get("/search/{needCategory:slug}", [SearchController::class, "needCategory"]);
+Route::resource("/users", ProfileController::class)->scoped(["user" => "username"]);
+Route::resource("/families", FamilyController::class);
 Route::resource("/food-records", FoodRecordController::class);
 Route::resource("/family-recipes", FamilyRecipeController::class);
 Route::resource("/recipes", RecipeController::class)->scoped(["recipe" => "slug"]);
