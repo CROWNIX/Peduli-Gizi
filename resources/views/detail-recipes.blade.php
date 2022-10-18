@@ -1,4 +1,5 @@
 <x-customer title="{{ $title }}">
+
     @component('components.navbar')
     @endcomponent
     {{-- topbar --}}
