@@ -30,8 +30,8 @@
             </a>
         </div>
         <div class="text-center">
-            <a href="/profile"
-                class="material-icons-outlined {{ request()->is('profile*') ? 'text-white bg-[#F58634]' : 'bg-white' }} rounded-full p-2"
+            <a href="/users"
+                class="material-icons-outlined {{ request()->is('users*') ? 'text-white bg-[#F58634]' : 'bg-white' }} rounded-full p-2"
                 style="font-size:32px">
                 person_outline
             </a>

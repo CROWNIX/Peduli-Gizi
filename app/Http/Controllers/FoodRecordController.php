@@ -6,6 +6,7 @@ use App\Models\Family;
 use App\Models\FoodRecord;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Helpers\Rumus;
 
 class FoodRecordController extends Controller
 {
