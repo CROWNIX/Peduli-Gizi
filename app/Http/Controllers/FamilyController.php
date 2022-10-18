@@ -48,7 +48,7 @@ class FamilyController extends Controller
 
         Family::create($validatedData);
 
-        return redirect("/families")->with("success", "Family has been added");
+        return redirect("/families")->with("success", "Keluarga berhasil ditambahkan");
     }
 
     public function show($name)
@@ -110,7 +110,7 @@ class FamilyController extends Controller
             ->update($validatedData);
 
 
-        return redirect("/families")->with("success", "Family has been updated");
+        return redirect("/families")->with("success", "Keluarga berhasil diupdate");
     }
 
     public function destroy($name)
@@ -121,6 +121,6 @@ class FamilyController extends Controller
             ->where("name", $family->name)
             ->delete();
 
-        return redirect("/families")->with("success", "Family has been deleted");
+        return redirect("/families")->with("success", "Keluarga berhasil dihapus");
     }
 }

@@ -78,7 +78,7 @@ class ProfileController extends Controller
 
         $user->update($validatedData);
 
-        return redirect("/users")->with("success", "Your profile has beed updated");
+        return redirect("/users")->with("success", "Profile anda berhasil diupdate");
     }
 
     public function destroy(User $user)
