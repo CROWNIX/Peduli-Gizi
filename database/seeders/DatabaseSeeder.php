@@ -23,24 +23,19 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
-            AgeCategorySeeder::class,
-        ]);
-
-        $this->call([
             NeedCategorySeeder::class,
         ]);
 
         $this->call([
             NeedSubCategorySeeder::class,
         ]);
-        
+
         $this->call([
             RecipeSeeder::class,
         ]);
-        
+
         $this->call([
             UserNeedSeeder::class,
         ]);
-
     }
 }

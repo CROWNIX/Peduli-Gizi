@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FoodRecord;
 use Illuminate\Http\Request;
+use App\Helpers\Rumus;
 
 class FoodRecordController extends Controller
 {
