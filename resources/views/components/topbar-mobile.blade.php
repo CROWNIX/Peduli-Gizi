@@ -5,7 +5,7 @@
                 arrow_back
             </span>
         </a>
-        <div class="text-center truncate w-56">
+        <div class="text-center truncate w-60">
             <h2 class="text-xl font-bold">{{ $title }}</h2>
         </div>
         {{ $slot }}
