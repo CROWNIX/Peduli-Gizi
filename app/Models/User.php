@@ -17,6 +17,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    protected $with = ["foodRecord"];
 
     protected $casts = [
         'email_verified_at' => 'datetime',
@@ -44,6 +45,10 @@ class User extends Authenticatable
 
     public function familyRecipe(){
         return $this->hasMany(FamilyRecipe::class);
+    }
+
+    public function family(){
+        return $this->hasMany(Family::class);
     }
 
 }

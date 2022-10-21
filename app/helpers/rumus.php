@@ -25,28 +25,43 @@ class Rumus
         }
     }
 
-    public static function foodRecordKalori($totalFoodKalori, $userKalori)
-    {
-        $totalKalori = ($totalFoodKalori / $userKalori) * 100;
-        return (int)$totalKalori;
-    }
-
-    public static function foodRecordProtein($userKalori)
-    {
+    public static function rumusProtein($userKalori){
         $totalProtein = 0.15 * $userKalori;
         return (int)$totalProtein;
     }
 
-    public static function foodRecordFat($userKalori)
-    {
+    public static function rumusFat($userKalori){
         $totalFat = 0.20 * $userKalori;
         return (int)$totalFat;
     }
 
-    public static function foodRecordCarbohydrate($userKalori)
-    {
+    public static function rumusCarbohydrate($userKalori){
         $totalCarbohydrate = 0.65 * $userKalori;
         return (int)$totalCarbohydrate;
+    }
+
+    public static function foodRecordKalori($totalFoodKalori, $userKalori)
+    {
+        $totalKalori = ($totalFoodKalori / $userKalori) * 100;
+        return (int)$totalKalori . "%";
+    }
+
+    public static function foodRecordProtein($totalFoodProtein, $userProtein)
+    {
+        $totalProtein = ($totalFoodProtein / $userProtein) * 100;
+        return (int)$totalProtein . "%";
+    }
+
+    public static function foodRecordFat($totalFoodFat, $userFat)
+    {
+        $totalFat = ($totalFoodFat / $userFat) * 100;
+        return (int)$totalFat . "%";
+    }
+
+    public static function foodRecordCarbohydrate($totalFoodCarbohydrate, $userCarboydrate)
+    {
+        $totalCarbohydrate = ($totalFoodCarbohydrate / $userCarboydrate) * 100;
+        return (int)$totalCarbohydrate . "%";
     }
 
     public static function foodRecordFamilyKalori($totalKaloryFamily, $totalFamily)
