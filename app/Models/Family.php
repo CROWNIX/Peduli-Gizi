@@ -18,4 +18,8 @@ class Family extends Model
     public function foodRecord(){
         return $this->hasMany(FoodRecord::class);
     }
+
+    public function userNeed(){
+        return $this->belongsTo(UserNeed::class);
+    }
 }
