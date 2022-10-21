@@ -2,9 +2,9 @@
     @component('components.navbar')
     @endcomponent
 
-    <section class="fixed top-0 right-0 left-0 bg-white p-4 text-center">
-        <span class="text-xl font-bold">Edit Profile</span>
-    </section>
+    <x-topbarMobile title="{{ $title }}">
+        <div></div>
+    </x-topbarMobile>
     {{-- foto Profile --}}
     <section class="flex flex-col items-center mt-24">
         <div
