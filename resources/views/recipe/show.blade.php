@@ -4,7 +4,7 @@
     @endcomponent
     {{-- topbar --}}
     <x-topbarMobile title="{{ $recipe->title }}">
-        <a href="#">
+        <a href="/food-records/create/?recipe={{ $recipe->slug }}">
             <span class="material-icons hover:text-[#F58634] focus:text-[#F58634] cursor-pointer" style="font-size: 28px">
                 add_circle_outline
             </span>
