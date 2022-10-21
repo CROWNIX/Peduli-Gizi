@@ -35,20 +35,24 @@ class ProfileController extends Controller
     public function edit(User $user)
     {
         return view("profile.edit", [
-            'title' => "Edit Profile"
+            'title' => "Edit Profile",
+            "user" => $user,
+            "userNeeds" => UserNeed::all()
         ]);
     }
 
     public function update(Request $request, User $user)
     {
+        // dd($request);
+        // $ruleImage = $request->image ? "image|file" : "";
         $rules = [
             "name" => "required",
             "user_need_id" => "required",
             "age" => "required",
             "gender" => "required",
-            "image" => "image|file"
+            // "image" => $ruleImage
         ];
-
+        
         if(!$request->name){
             $rules = [
                 "image" => "image|file"

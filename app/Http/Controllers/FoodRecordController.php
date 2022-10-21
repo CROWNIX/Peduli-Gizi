@@ -44,7 +44,7 @@ class FoodRecordController extends Controller
             "carbohydrate" => $foodRecordCarbohydrate
         ]);
     }
-
+    
     public function create()
     {
         $user = User::find(auth()->user()->id);

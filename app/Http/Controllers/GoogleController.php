@@ -40,7 +40,6 @@ class GoogleController extends Controller{
             Auth::login($user);
             return redirect("/beranda");
         } catch (\Throwable $th) {
-            dd($th);
             abort(404);
         }
     }
