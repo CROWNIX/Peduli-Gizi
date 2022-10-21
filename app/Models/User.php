@@ -22,6 +22,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function userNeed(){
+        return $this->belongsTo(UserNeed::class);
+    }
+
     public function role(){
         return $this->belongsTo(Role::class);
     }
@@ -41,4 +45,5 @@ class User extends Authenticatable
     public function familyRecipe(){
         return $this->hasMany(FamilyRecipe::class);
     }
+
 }

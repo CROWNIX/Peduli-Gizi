@@ -11,11 +11,18 @@ class FoodRecord extends Model
 
     protected $guarded = ["id"];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function recipe(){
+    public function family()
+    {
+        return $this->belongsTo(Family::class);
+    }
+
+    public function recipe()
+    {
         return $this->belongsTo(Recipe::class);
     }
 }

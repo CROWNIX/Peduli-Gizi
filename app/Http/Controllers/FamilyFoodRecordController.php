@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Recipe;
 use Illuminate\Http\Request;
 
-class RecipeController extends Controller
+class FamilyFoodRecordController extends Controller
 {
     public function index()
     {
-        return view("recipe.index", [
-            'title' => "Resep Makanan Bergizi",
-            "recipes" => Recipe::latest()->filter()->get()
-        ]);
+        //
     }
 
     public function create()
@@ -25,12 +21,9 @@ class RecipeController extends Controller
         //
     }
 
-    public function show(Recipe $recipe)
+    public function show($id)
     {
-        return view("recipe.show", [
-            'title' => $recipe->title,
-            "recipe" => $recipe
-        ]);
+        //
     }
 
     public function edit($id)

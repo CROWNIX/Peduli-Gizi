@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAgeCategoriesTable extends Migration
+class CreateUserNeedsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateAgeCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('age_categories', function (Blueprint $table) {
+        Schema::create('user_needs', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->string("slug");
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateAgeCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('age_categories');
+        Schema::dropIfExists('user_needs');
     }
 }

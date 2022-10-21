@@ -14,23 +14,42 @@ class Recipe extends Model
     protected $guarded = ["id"];
     protected $with = ["needSubCategory"];
 
-    public function needSubCategory(){
+    public function scopeFilter($query)
+    {
+        $keyword = request("search");
+
+        if ($keyword) {
+            return $query->where("title", "like", "%" . $keyword . "%")
+                ->orWhere("ingridients", "like", "%" . $keyword . "%");
+        }
+    }
+
+    public function scopePopular()
+    {
+    }
+
+    public function needSubCategory()
+    {
         return $this->belongsTo(NeedSubCategory::class);
     }
 
-    public function foodRecord(){
+    public function foodRecord()
+    {
         return $this->hasMany(FoodRecord::class);
     }
 
-    public function familyRecipe(){
+    public function familyRecipe()
+    {
         return $this->hasMany(FamilyRecipe::class);
     }
 
-    public function response(){
+    public function response()
+    {
         return $this->hasMany(Response::class);
     }
 
-    public function review(){
+    public function review()
+    {
         return $this->hasMany(Review::class);
     }
 
