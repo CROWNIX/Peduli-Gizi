@@ -24,7 +24,7 @@ Route::get("/", function () {
 Route::get("/beranda", [HomeController::class, "index"]);
 
 //* Authentication 
-Route::get("/login", [LoginController::class, "index"])->middleware("guest");
+Route::get("/login", [LoginController::class, "index"])->middleware("guest")->name('login');
 Route::get("/login/google", [GoogleController::class, "login"])->middleware("guest");
 Route::get("/login/google/callback", [GoogleController::class, "callback"])->middleware("guest");
 Route::post("/logout", [LoginController::class, "logout"]);

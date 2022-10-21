@@ -35,7 +35,8 @@ class FamilyController extends Controller
             }
         }
 
-        return view("", [
+        return view("family.index", [
+            'title' => 'Keluargaku',
             "families" => Family::where("user_id", auth()->user()->id)->get(),
             "kalori" => $kalori,
             "protein" => $protein,
@@ -46,7 +47,9 @@ class FamilyController extends Controller
 
     public function create()
     {
-        return view("");
+        return view("family.create", [
+            'title' => 'Tambah Keluarga'
+        ]);
     }
 
     public function store(Request $request)
@@ -67,11 +70,11 @@ class FamilyController extends Controller
         $validatedData["weight"] = $request->weight;
         $validatedData["height"] = $request->height ?? 151;
 
-        if(!$validatedData["weight"]){
+        if (!$validatedData["weight"]) {
             $validatedData["weight"] = $request->gender == "laki-laki" ? 61 : 56;
-        } 
+        }
 
-        if($request->file("image")){
+        if ($request->file("image")) {
             $validatedData["image"] = $request->file("image")->store("images/families");
         }
 
@@ -89,7 +92,7 @@ class FamilyController extends Controller
         $fat = Rumus::rumusFat($kalori);
         $carbohydrate = Rumus::rumusCarbohydrate($kalori);
 
-        if(!$family){
+        if (!$family) {
             abort(404);
         }
 
@@ -106,7 +109,7 @@ class FamilyController extends Controller
     {
         $famiily = Family::where("user_id", auth()->user()->id)->where("name", $name)->first();
 
-        if(!$famiily){
+        if (!$famiily) {
             abort(404);
         }
 
@@ -131,15 +134,15 @@ class FamilyController extends Controller
         $validatedData["weight"] = $request->weight;
         $validatedData["height"] = $request->height ?? 151;
 
-        if(!$validatedData["weight"]){
+        if (!$validatedData["weight"]) {
             $validatedData["weight"] = $request->gender == "laki-laki" ? 61 : 56;
-        } 
+        }
 
-        if($request->file("image")){
-            if($family->image){
+        if ($request->file("image")) {
+            if ($family->image) {
                 Storage::delete($family->image);
             }
-            
+
             $validatedData["image"] = $request->file("image")->store("images/families");
         }
 
