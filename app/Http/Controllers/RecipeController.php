@@ -9,7 +9,7 @@ class RecipeController extends Controller
 {
     public function index()
     {
-        return view("recipes", [
+        return view("recipe.index", [
             'title' => "Resep Makanan Bergizi",
             "recipes" => Recipe::latest()->filter()->get()
         ]);
@@ -27,7 +27,7 @@ class RecipeController extends Controller
 
     public function show(Recipe $recipe)
     {
-        return view("detail-recipes", [
+        return view("recipe.show", [
             'title' => $recipe->title,
             "recipe" => $recipe
         ]);
