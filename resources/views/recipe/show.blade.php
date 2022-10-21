@@ -3,20 +3,13 @@
     @component('components.navbar')
     @endcomponent
     {{-- topbar --}}
-    <section class="fixed top-0 right-0 left-0 z-50 bg-white">
-        <div class="flex justify-between p-4 shadow">
-            <span class="material-icons-outlined cursor-pointer">
-                arrow_back
+    <x-topbarMobile title="{{ $recipe->title }}">
+        <a href="#">
+            <span class="material-icons hover:text-[#F58634] focus:text-[#F58634] cursor-pointer" style="font-size: 28px">
+                add_circle_outline
             </span>
-            <h2 class="text-xl font-bold">{{ $recipe->title }}</h2>
-            <a href="#">
-                <span class="material-icons hover:text-[#F58634] focus:text-[#F58634] cursor-pointer"
-                    style="font-size: 28px">
-                    add_circle_outline
-                </span>
-            </a>
-        </div>
-    </section>
+        </a>
+    </x-topbarMobile>
     {{-- End top bar --}}
 
     {{-- Recipe --}}
