@@ -9,7 +9,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return view("profile", [
+        return view("profile.index", [
             'title' => "Profile"
         ]);
     }
@@ -31,7 +31,9 @@ class ProfileController extends Controller
 
     public function edit(User $user)
     {
-        //
+        return view("profile.edit", [
+            'title' => "Edit Profile"
+        ]);
     }
 
     public function update(Request $request, User $user)
