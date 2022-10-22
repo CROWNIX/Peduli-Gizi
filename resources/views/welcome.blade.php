@@ -1,70 +1,70 @@
 <x-customer title="{{ $title }}">
 
-    
+
     {{-- Mobile Version --}}
-    @auth      
-    <section class="md:hidden block mt-12">
-        {{-- Navbar Mobile --}}
-        @component('components.navbar')
-        @endcomponent
-        {{-- End Navbar Mobile --}}
-        {{-- Hero --}}
-        <div class="text-center">
-            <h1 class="text-2xl text-black font-semibold">
-                Halo Rully
-            </h1>
-            <p class="text-base text-black">
-                Konsumsi makanan bergizi setiap hari
-            </p>
-        </div>
-        {{-- End Hero --}}
-
-        {{-- Food Healty --}}
-        <section class="p-4">
-            <div class="p-6 relative text-white bg-gradient-to-r from-[#69B550] via-[#69B550] to-white rounded-3xl">
-                <div class="w-2/3">
-                    <h3 class="text-xl font-bold">Food Healty</h3>
-                    <p class="text-xs font-semibold my-1">Makanan Sehat <br> Berdasarkan Kriteria</p>
-                    <p class="text-xs my-1 font-light italic">Usia - Kebutuhan - Pria / Wanita</p>
-
-                    <button class="mt-2 bg-[#F58634] py-2 px-6 rounded-lg font-semibold text-xs">Cek Disini</button>
-                </div>
-                <img class="absolute top-10 right-2" src="{{ asset('images/produk/makanan-1.png') }}">
+    @auth
+        <section class="md:hidden block mt-12">
+            {{-- Navbar Mobile --}}
+            @component('components.navbar')
+            @endcomponent
+            {{-- End Navbar Mobile --}}
+            {{-- Hero --}}
+            <div class="text-center">
+                <h1 class="text-2xl text-black font-semibold">
+                    Halo Rully
+                </h1>
+                <p class="text-base text-black">
+                    Konsumsi makanan bergizi setiap hari
+                </p>
             </div>
-        </section>
-        {{-- End Food Healty --}}
-        {{-- Food Record --}}
-        <section class="p-4 text-white">
-            <div
-                class="bg-[#F58634] relative px-8 py-3 flex justify-between items-center rounded-3xl before:block before:absolute before:bg-[#69B550] before:w-2/5 before:h-full before:top-0 before:right-0 before:z-0 overflow-hidden before:rounded-bl-full">
-                <div class="text-base font-semibold">
-                    Food Record <br> Mingguan Anda
-                </div>
-                <div class="relative z-10">
-                    <button class="text-sm font-semibold text-[#F58634] bg-white py-2 px-3 rounded-xl">Cek
-                        Disini</button>
-                </div>
-            </div>
-        </section>
-        {{-- End Food Record --}}
+            {{-- End Hero --}}
 
-        {{-- Resep Makanan --}}
-        <section class="p-4">
-            <h3 class="text-xl ml-2">Resep Makanan Sehat</h3>
-            <div class="swiper resep-makanan my-2">
-                <div class="swiper-wrapper">
-                    @foreach ($recipes as $recipe)
-                        <div class="swiper-slide flex justify-center items-center flex-col bg-[#FFF2F0] p-4 rounded-3xl"
-                            onclick="window.location.href = '/recipes/{{ $recipe->slug }}'">
-                            <img src="{{ asset('images/produk/resep-1.png') }}">
-                            <p class="text-base text-[#4D0A00]"> {{ $recipe->title }}</p>
-                        </div>
-                    @endforeach
+            {{-- Food Healty --}}
+            <section class="p-4">
+                <div class="p-6 relative text-white bg-gradient-to-r from-[#69B550] via-[#69B550] to-white rounded-3xl">
+                    <div class="w-2/3">
+                        <h3 class="text-xl font-bold">Food Healty</h3>
+                        <p class="text-xs font-semibold my-1">Makanan Sehat <br> Berdasarkan Kriteria</p>
+                        <p class="text-xs my-1 font-light italic">Usia - Kebutuhan - Pria / Wanita</p>
+
+                        <button class="mt-2 bg-[#F58634] py-2 px-6 rounded-lg font-semibold text-xs">Cek Disini</button>
+                    </div>
+                    <img class="absolute top-10 right-2" src="{{ asset('images/produk/makanan-1.png') }}">
                 </div>
-            </div>
+            </section>
+            {{-- End Food Healty --}}
+            {{-- Food Record --}}
+            <section class="p-4 text-white">
+                <div
+                    class="bg-[#F58634] relative px-8 py-3 flex justify-between items-center rounded-3xl before:block before:absolute before:bg-[#69B550] before:w-2/5 before:h-full before:top-0 before:right-0 before:z-0 overflow-hidden before:rounded-bl-full">
+                    <div class="text-base font-semibold">
+                        Food Record <br> Mingguan Anda
+                    </div>
+                    <div class="relative z-10">
+                        <button class="text-sm font-semibold text-[#F58634] bg-white py-2 px-3 rounded-xl">Cek
+                            Disini</button>
+                    </div>
+                </div>
+            </section>
+            {{-- End Food Record --}}
+
+            {{-- Resep Makanan --}}
+            <section class="p-4">
+                <h3 class="text-xl ml-2">Resep Makanan Sehat</h3>
+                <div class="swiper resep-makanan my-2">
+                    <div class="swiper-wrapper">
+                        @foreach ($recipes as $recipe)
+                            <div class="swiper-slide flex justify-center items-center flex-col bg-[#FFF2F0] p-4 rounded-3xl"
+                                onclick="window.location.href = '/recipes/{{ $recipe->slug }}'">
+                                <img src="{{ asset('images/produk/resep-1.png') }}">
+                                <p class="text-base text-[#4D0A00]"> {{ $recipe->title }}</p>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+            {{-- End Resep Makanan --}}
         </section>
-        {{-- End Resep Makanan --}}
-    </section>
     @else
         <section class="md:hidden block bg-gradient-to-b from-[#69B550] via-orange-200 to-[#69B550] overflow-x-hidden">
             <nav class="sticky top-0 z-50 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
@@ -170,16 +170,6 @@
                 <div class="grid grid-cols-1 my-2">
                     <button class="text-white rounded-full py-1 bg-[#69B550]">Lainnya</button>
                 </div>
-                <script>
-                    var recipesMoble = new Swiper(".recipe-mobile", {
-                        slidesPerView: 2,
-                        spaceBetween: 10,
-                        pagination: {
-                            el: ".swiper-pagination",
-                            clickable: true,
-                        },
-                    });
-                </script>
             </div>
             <section class="p-4">
                 <h2 class="text-2xl font-bold text-center mb-3">Pencapaian Mingguan</h2>
@@ -305,12 +295,12 @@
             @auth
             @else
                 <a href="/login"
-                class="outline outline-[#F58634] text-[#F58634] capitalize bg-white font-[Poppins] font-bold text-xl duration-500 px-8 py-1 mx-4 hover:bg-[#F58634] hover:text-white hover:outline-white rounded cursor-pointer"
-                style="border-radius: 16px 32px 0px 16px">
-                masuk / daftar
+                    class="outline outline-[#F58634] text-[#F58634] capitalize bg-white font-[Poppins] font-bold text-xl duration-500 px-8 py-1 mx-4 hover:bg-[#F58634] hover:text-white hover:outline-white rounded cursor-pointer"
+                    style="border-radius: 16px 32px 0px 16px">
+                    masuk / daftar
                 </a>
             @endauth
-                  
+
         </nav>
         {{-- Bagian Hero Section --}}
         <section class="invisible md:visible hero relative overflow-hidden">
@@ -570,11 +560,26 @@
             }
         });
     </script>
+    @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    @endpush
     <!-- Initialize Swiper -->
     <script>
         var swiper = new Swiper(".mySwiper", {
             effect: "cards",
             grabCursor: true,
+        });
+        var recipesMoble = new Swiper(".recipe-mobile", {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+        var recipesMoble2 = new Swiper(".resep-makanan", {
+            slidesPerView: 2,
+            spaceBetween: 10,
         });
     </script>
 </x-customer>
