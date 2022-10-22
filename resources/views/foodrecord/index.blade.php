@@ -7,7 +7,7 @@
         <x-select name="family_id">
             <option value="">Seluruh Keluarga</option>
             @foreach ($families as $family)
-                <option value="{{ $family->id }}">{{ $family->name }}</option>
+                <option value="{{ $family->id }}" onclick="window.location.href = '/food-records/families/{{ $family->name }}'">{{ $family->name }}</option>
             @endforeach
         </x-select>
 

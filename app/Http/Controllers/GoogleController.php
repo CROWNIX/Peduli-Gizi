@@ -24,7 +24,7 @@ class GoogleController extends Controller
             $username = Str::slug($googleUser->name, '-');
 
             if ($user) {
-                Auth::login($user);
+                Auth::login($user, true);
 
                 if ($user->role->name == "admin") {
                     return redirect("/admin");
@@ -40,7 +40,7 @@ class GoogleController extends Controller
                 "image" => $googleUser->avatar,
             ]);
 
-            Auth::login($user);
+            Auth::login($user, true);
             return redirect("/beranda");
         } catch (\Throwable $th) {
             abort(404);
