@@ -13,9 +13,7 @@ class FoodRecordController extends Controller
     public function index()
     {
         $user = User::find(auth()->user()->id);
-
-        $weight = Rumus::konvertKgToCm($user->weight);
-        $userKalori = Rumus::rumusKalori($user->gender, $user->age, $user->height, $weight);
+        $userKalori = Rumus::rumusKalori($user->gender, $user->age, $user->height, $user->weight);
         $userProtein = Rumus::rumusProtein($userKalori);
         $userFat = Rumus::rumusFat($userKalori);
         $userCarbohydrate = Rumus::rumusCarbohydrate($userKalori);
