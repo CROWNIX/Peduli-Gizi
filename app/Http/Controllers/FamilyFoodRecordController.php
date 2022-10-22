@@ -125,9 +125,9 @@ class FamilyFoodRecordController extends Controller
         }
 
         foreach (Fungsi::hari() as $day) {
-                $foodRecords[$day["value"]]["Sarapan"] = $user->foodRecord->where("day", $day["value"])->where("time", "Sarapan");
-                $foodRecords[$day["value"]]["Makan Siang"] = $user->foodRecord->where("day", $day["value"])->where("time", "Makan Siang");
-                $foodRecords[$day["value"]]["Makan Malam"] = $user->foodRecord->where("day", $day["value"])->where("time", "Makan Malam");
+                $foodRecords[$day["value"]]["Sarapan"] = $user->foodRecord->where("day", $day["value"])->where("time", "sarapan");
+                $foodRecords[$day["value"]]["Makan Siang"] = $user->foodRecord->where("day", $day["value"])->where("time", "makan siang");
+                $foodRecords[$day["value"]]["Makan Malam"] = $user->foodRecord->where("day", $day["value"])->where("time", "makan malam");
         }
 
         return view('foodrecord.index', [
