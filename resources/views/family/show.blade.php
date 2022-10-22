@@ -3,19 +3,21 @@
     @endcomponent
 
     <x-topbarMobile title="{{ $title }}">
-        <a href="#">
-            <span class="material-icons text-red-500 hover:text-red-500 focus:text-red-500 cursor-pointer"
-                style="font-size: 28px">
+        <form action="/families/{{ $family->name }}" class="d-inline" method="post">
+            @method("delete")
+            @csrf
+            <button type="submit" class="material-icons text-red-500 hover:text-red-500 focus:text-red-500 cursor-pointer"
+                style="font-size: 28px" onclick="return confirm('Are you sure ?')">
                 delete_forever
-            </span>
-        </a>
+            </button>
+        </form>
     </x-topbarMobile>
     {{-- foto Profile --}}
-    <form action="/families" class="" method="POST">
+    <form action="/families/{{ $family->name }}" class="" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <section class="flex flex-col items-center mt-20">
-            <x-fotoProfile image="/images/profile/{{ $family->image }}"></x-fotoProfile>
+            <x-fotoProfile image="{{ asset('storage/' . $family->image) }}"></x-fotoProfile>
         </section>
         {{-- End foto profile --}}
         <div class="px-4 mb-4">

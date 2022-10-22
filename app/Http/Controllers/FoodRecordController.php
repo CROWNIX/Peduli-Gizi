@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\FoodRecord;
 use App\Models\Family;
+use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Helpers\Rumus;
+use App\Helpers\Fungsi;
+use Illuminate\Support\Str;
 
 class FoodRecordController extends Controller
 {
@@ -33,9 +36,22 @@ class FoodRecordController extends Controller
         $foodRecordFat = Rumus::foodRecordFat($totalFoodFat, $userFat);
         $foodRecordCarbohydrate = Rumus::foodRecordCarbohydrate($totalFoodCarbohydrate, $userCarbohydrate);
 
+        $foodRecords = [];
+        foreach (Fungsi::hari() as $day) {
+            $foodRecords[$day["value"]]["Sarapan"] = [];
+            $foodRecords[$day["value"]]["Makan Siang"] = [];
+            $foodRecords[$day["value"]]["Makan Malam"] = [];
+        }
+
+        foreach (Fungsi::hari() as $day) {
+                $foodRecords[$day["value"]]["Sarapan"] = $user->foodRecord->where("day", $day["value"])->where("time", "Sarapan");
+                $foodRecords[$day["value"]]["Makan Siang"] = $user->foodRecord->where("day", $day["value"])->where("time", "Makan Siang");
+                $foodRecords[$day["value"]]["Makan Malam"] = $user->foodRecord->where("day", $day["value"])->where("time", "Makan Malam");
+        }
+
         return view('foodrecord.index', [
             'title' => 'Food Record',
-            "foodRecords" => $user->foodRecord,
+            "foodRecords" => $foodRecords,
             "kalori" => $foodRecordKalori,
             "protein" => $foodRecordProtein,
             "fat" => $foodRecordFat,
@@ -61,14 +77,15 @@ class FoodRecordController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            "recipe_id" => "required",
             "day" => "required",
             "time" => "required",
             "portion" => "required"
         ];
 
         $validatedData = $request->validate($rules);
+        $recipe = Recipe::where("slug", Str::slug($request->recipe_slug, "-"))->first();
         $validatedData["family_id"] = $request->family_id;
+        $validatedData["recipe_id"] = $recipe->id;
         if (!$request->family_id) {
             $validatedData["user_id"] = auth()->user()->id;
         }
@@ -80,23 +97,24 @@ class FoodRecordController extends Controller
 
     public function show($id)
     {
-        $foodRecord = FoodRecord::find($id)->where("user_id", auth()->user()->id);
+        $foodRecord = FoodRecord::where("user_id", auth()->user()->id)->find($id);
 
-        if (!$foodRecord) {
+        if(!$foodRecord){
             abort(404);
         }
 
+
         return view("foodrecord.show", [
-            'title' => $foodRecord->title,
+            'title' => $foodRecord->recipe->title,
             "foodRecord" => $foodRecord
         ]);
     }
 
     public function edit($id)
     {
-        $foodRecord = FoodRecord::find($id)->where("user_id", auth()->user()->id);
+        $foodRecord = FoodRecord::where("user_id", auth()->user()->id)->find($id);
 
-        if (!$foodRecord) {
+        if(!$foodRecord){
             abort(404);
         }
 

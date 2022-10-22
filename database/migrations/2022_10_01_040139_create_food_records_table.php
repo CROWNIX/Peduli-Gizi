@@ -19,7 +19,7 @@ class CreateFoodRecordsTable extends Migration
             $table->foreignId("family_id")->nullable()->constrained();
             $table->foreignId("recipe_id")->constrained();
             $table->string("day");
-            $table->enum("time", ["pagi", "siang", "malam"]);
+            $table->enum("time", ["Sarapan", "Makan Siang", "Makan Malam"]);
             $table->integer("portion");
             $table->timestamps();
         });

@@ -6,7 +6,7 @@
         <div></div>
     </x-topbarMobile>
     {{-- foto Profile --}}
-    <form action="/families" class="" method="POST">
+    <form action="/families" class="" method="POST" enctype="multipart/form-data">
         @csrf
         <section class="flex flex-col items-center mt-24">
             <x-fotoProfile></x-fotoProfile>
@@ -15,6 +15,11 @@
 
         {{-- Form Edit --}}
         <div class="px-4 mb-20">
+            @error("name")
+            <div class="px-3 py-3 bg-pink-600 text-center">
+                <span>{{ $message }}</span>
+            </div>
+            @enderror
             <x-input value="{{ old('name') }}" label="Nama Lengkap" name="name" />
             <x-select name="gender" label="Jenis Kelamin">
                 <option>Pilih jenis kelamin</option>
