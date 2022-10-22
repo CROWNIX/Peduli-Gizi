@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Family;
+use App\Models\UserNeed;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Helpers\Rumus;
@@ -14,20 +15,19 @@ class FamilyController extends Controller
     {
         $user = User::find(auth()->user()->id);
 
-        if(!$user->age){
+        if (!$user->age) {
             return redirect("/users/$user->username/edit")->with("warning", "Anda harus melengkapi profile terlebih dahulu");
         }
 
-        $weight = Rumus::konvertKgToCm($user->weight);
-        $kalori = Rumus::rumusKalori($user->gender, $user->age, $user->height, $weight);
+        $weight = Rumus::konvertKgToGram($user->weight);
+        $kalori = Rumus::rumusKalori($user->gender, $user->age, $user->height, $user->weight);
         $protein = Rumus::rumusProtein($kalori);
         $fat = Rumus::rumusFat($kalori);
         $carbohydrate = Rumus::rumusCarbohydrate($kalori);
 
-        if($user->family->count()){
+        if ($user->family->count()) {
             foreach ($user->family as $family) {
-                $weight = Rumus::konvertKgToCm($family->weight);
-                $familyKalory = Rumus::rumusKalori($user->gender, $user->age, $user->height, $weight);
+                $familyKalory = Rumus::rumusKalori($family->gender, $family->age, $family->height, $family->weight);
                 $kalori += $familyKalory;
                 $protein += Rumus::rumusProtein($familyKalory);
                 $fat += Rumus::rumusFat($familyKalory);
@@ -48,7 +48,8 @@ class FamilyController extends Controller
     public function create()
     {
         return view("family.create", [
-            'title' => 'Tambah Keluarga'
+            'title' => 'Tambah Keluarga',
+            "userNeeds" => UserNeed::all()
         ]);
     }
 
@@ -86,8 +87,7 @@ class FamilyController extends Controller
     public function show($name)
     {
         $family = Family::where("user_id", auth()->user()->id)->where("name", $name)->first();
-        $weight = Rumus::konvertKgToCm($family->weight);
-        $kalori = Rumus::rumusKalori($family->gender, $family->age, $family->height, $weight);
+        $kalori = Rumus::rumusKalori($family->gender, $family->age, $family->height, $family->weight);
         $protein = Rumus::rumusProtein($kalori);
         $fat = Rumus::rumusFat($kalori);
         $carbohydrate = Rumus::rumusCarbohydrate($kalori);
@@ -96,7 +96,9 @@ class FamilyController extends Controller
             abort(404);
         }
 
-        return view("", [
+        return view("family.show", [
+            'title' => $family->name,
+            "userNeeds" => UserNeed::all(),
             "family" => $family,
             "kalori" => $kalori,
             "protein" => $protein,

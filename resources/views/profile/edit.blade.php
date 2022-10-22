@@ -2,75 +2,49 @@
     @component('components.navbar')
     @endcomponent
 
-    <section class="fixed top-0 right-0 left-0 bg-white p-4 text-center">
-        <span class="text-xl font-bold">Edit Profile</span>
-    </section>
-    {{-- foto Profile --}}
-    <section class="flex flex-col items-center mt-24">
-        <div
-            class="bg-gray-400 overflow-hidden text-white w-48 h-48 rounded-full flex justify-center items-center text-3xl">
-            <img src="{{ asset('images/profile/default.png') }}" class="h-full object-cover">
-        </div>
-    </section>
-    {{-- End foto profile --}}
-
+    <x-topbarMobile title="{{ $title }}">
+        <div></div>
+    </x-topbarMobile>
     {{-- Form Edit --}}
-    <form action="/users/{{ $user->username }}" class="px-4 mb-20" method="POST">
-        @method("put")
+    <form action="/users/{{ $user->username }}" method="POST">
+        @method('put')
         @csrf
-        <div class="mb-2">
-            <label for="first_name" class="blocktext-lg font-medium text-gray-900 dark:text-gray-300">Nama
-                Lengkap</label>
-            <input type="text" id="first_name"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="John" required name="name" value="{{ old("name", $user->name) }}">
-        </div>
-        <div class="mb-2">
-            <label for="countries" class="block text-lg font-medium text-gray-900 dark:text-gray-400">Jenis
-                Kelamin</label>
-            <select id="countries"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="gender">
-                <option>Pilih jenis kelamin</option>
-                <option value="laki-laki" {{ $user->gender == "laki-laki" ? "selected" : "" }}>Laki - Laki</option>
-                <option value="perempuan" {{ $user->gender == "lperempuan" ? "selected" : "" }}>Perempuan</option>
-            </select>
-        </div>
-        <div class="mb-2">
-            <label for="countries" class="block text-lg font-medium text-gray-900 dark:text-gray-400">Fokus
-                Kebutuhan</label>
-            <select id="countries"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="user_need_id">
-                <option selected>Pilih fokus kebutuhan</option>
+        {{-- foto Profile --}}
+        <section class="flex flex-col items-center mt-24 mb-4">
+            <x-fotoProfile></x-fotoProfile>
+        </section>
+        {{-- End foto profile --}}
+        <div class="px-4 mb-20">
+            <x-input value="{{ old('name', $user->name) }}" label="Nama Lengkap" name="name" />
+            <x-select name="gender" label="Jenis Kelamin">
+                <option value="">Pilih jenis kelamin</option>
+                <option value="laki-laki" {{ old('gander', $user->gender) == 'laki-laki' ? 'selected' : '' }}>Laki -
+                    Laki
+                </option>
+                <option value="perempuan" {{ old('gander', $user->gender) == 'perempuan' ? 'selected' : '' }}>Perempuan
+                </option>
+            </x-select>
+            <x-select name="user_need_id" label="Fokus Kebutuhan">
+                <option value="" selected>Pilih fokus kebutuhan</option>
                 @foreach ($userNeeds as $userNeed)
-                    <option value="{{ $userNeed->id }}" {{ $user->userNeed->name ?? null == $userNeed->name ? "selected" : "" }}>{{ $userNeed->name }}</option>
+                    <option value="{{ $userNeed->id }}"
+                        {{ $user->userNeed->name ?? null == $userNeed->name ? 'selected' : '' }}>
+                        {{ $userNeed->name }}
+                    </option>
                 @endforeach
-            </select>
-        </div>
+            </x-select>
 
-        <div class="grid grid-cols-3 gap-2">
-            <div class="mb-2">
-                <label for="first_name" class="blocktext-lg font-medium text-gray-900 dark:text-gray-300">Usia</label>
-                <input type="text" id="first_name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="John" required name="age" value="{{ old("age", $user->age) }}">
+            <div class="grid grid-cols-3 gap-2">
+                <x-input required name="age" value="{{ old('age', $user->age) }}" type="number" label="Usia" />
+                <x-input required name="weight" value="{{ old('weight', $user->weight) }}" type="number"
+                    label="Berat Badan" />
+                <x-input required name="height" value="{{ old('height', $user->height) }}" type="number"
+                    label="Tinggi Badan" />
             </div>
-            <div class="mb-2">
-                <label for="first_name" class="blocktext-lg font-medium text-gray-900 dark:text-gray-300">Berat
-                    Badan</label>
-                <input type="text" id="first_name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="John" required name="weight" value="{{ old("weight", $user->weight) }}">
+            <div class="grid grid-cols-1 my-2">
+                <button type="submit"
+                    class="bg-[#F58634] py-2 text-white font-bold text-lg rounded-full">Simpan</button>
             </div>
-            <div class="mb-2">
-                <label for="first_name" class="blocktext-lg font-medium text-gray-900 dark:text-gray-300">Tinggi
-                    Badan</label>
-                <input type="text" id="first_name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="John" required name="height" value="{{ old("height", $user->height) }}">
-            </div>
-        </div>
-        <div class="grid grid-cols-1 my-2">
-            <button type="submit" class="bg-[#F58634] py-2 text-white font-bold text-lg rounded-full">Simpan</button>
         </div>
     </form>
     {{-- End From Edit --}}

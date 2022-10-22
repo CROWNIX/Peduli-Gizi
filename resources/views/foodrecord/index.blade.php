@@ -4,41 +4,27 @@
     {{-- Pencapaian Mingguan --}}
     <section class="p-4">
         <h2 class="text-2xl font-bold text-center mb-3">Pencapaian Mingguan</h2>
-        <div class="bg-[#69B550] text-center p-4 text-white rounded-xl text-lg">
-            <h5 class="capitalize">Budget Kalori</h5>
-            <div class="w-full h-9 bg-gray-200 rounded-xl dark:bg-gray-700">
-                <div class="h-9 bg-[#F58634] rounded-xl dark:bg-blue-500 flex items-center justify-center"
-                    style="width: 45%">45%
-                </div>
-            </div>
-            <div class="grid grid-cols-3 gap-2">
-                <div class="protein">
-                    <h5 class="capitalize">protein</h5>
-                    <div class="w-full h-9 bg-gray-200 rounded-xl dark:bg-gray-700">
-                        <div class="h-9 bg-[#F58634] rounded-xl dark:bg-blue-500 flex items-center justify-center"
-                            style="width: 28.9%">28,9%
-                        </div>
-                    </div>
-                </div>
-                <div class="karbohidrat">
-                    <h5 class="capitalize">karbohidrat</h5>
-                    <div class="w-full h-9 bg-gray-200 rounded-xl dark:bg-gray-700">
-                        <div class="h-9 bg-[#F58634] rounded-xl dark:bg-blue-500 flex items-center justify-center"
-                            style="width: 45%">45%
-                        </div>
-                    </div>
-                </div>
-                <div class="lemak">
-                    <h5 class="capitalize">lemak</h5>
-                    <div class="w-full h-9 bg-gray-200 rounded-xl dark:bg-gray-700">
-                        <div class="h-9 bg-[#F58634] rounded-xl dark:bg-blue-500 flex items-center justify-center"
-                            style="width: 45%">45%
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-select name="family_id">
+            <option value="">Seluruh Keluarga</option>
+            @foreach ($families as $family)
+                <option value="{{ $family->id }}">{{ $family->name }}</option>
+            @endforeach
+        </x-select>
 
+        <x-foodRecordResult>
+            <x-slot name="kalori">
+                {{ $kalori }}
+            </x-slot>
+            <x-slot name="protein">
+                {{ $protein }}
+            </x-slot>
+            <x-slot name="carbohydrate">
+                {{ $carbohydrate }}
+            </x-slot>
+            <x-slot name="fat">
+                {{ $fat }}
+            </x-slot>
+        </x-foodRecordResult>
         {{-- Hari --}}
         <section class="p-4">
             <div class="swiper hari">
@@ -154,6 +140,17 @@
 
             hari.controller.control = resep;
             resep.controller.control = hari;
+
+            let dropdown = $('#dropdown');
+            $(".time").on("click", function(e) {
+                $('[name="family_id"]').val(this.dataset.familyid)
+                $('[name="name"]').val(this.dataset.familyname)
+            })
+
+            $('#btn-dropdown').on('click', function() {
+                dropdown.toggleClass('hidden');
+                dropdown.toggleClass('flex');
+            })
         </script>
 
 

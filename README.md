@@ -75,5 +75,11 @@ Setelah proses installasi selesai. jalankan server dengan perintah berikut
   php artisan serve
 ```
 
+Env google
+
+```bash
+  GOOGLE_CLIENT_ID = 531679190409-4s79pdaaq5fs45ooi5baos14juvu2ddu.apps.googleusercontent.com
+  GOOGLE_CLIENT_SECRET = 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
+```
 <p align="right">(<a href="#top">back to top</a>)</p>
 

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Family;
 use App\Models\FoodRecord;
+use App\Models\Family;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Helpers\Rumus;
@@ -13,9 +13,7 @@ class FoodRecordController extends Controller
     public function index()
     {
         $user = User::find(auth()->user()->id);
-
-        $weight = Rumus::konvertKgToCm($user->weight);
-        $userKalori = Rumus::rumusKalori($user->gender, $user->age, $user->height, $weight);
+        $userKalori = Rumus::rumusKalori($user->gender, $user->age, $user->height, $user->weight);
         $userProtein = Rumus::rumusProtein($userKalori);
         $userFat = Rumus::rumusFat($userKalori);
         $userCarbohydrate = Rumus::rumusCarbohydrate($userKalori);
@@ -24,10 +22,10 @@ class FoodRecordController extends Controller
         $totalFoodFat = 0;
         $totalFoodCarbohydrate = 0;
         foreach ($user->foodRecord as $foodRecord) {
-           $totalFoodKalori += $foodRecord->recipe->energy * $foodRecord->portion;
-           $totalFoodProtein += $foodRecord->recipe->protein * $foodRecord->portion;
-           $totalFoodFat += $foodRecord->recipe->fat * $foodRecord->portion;
-           $totalFoodCarbohydrate += $foodRecord->recipe->carbohydrate * $foodRecord->portion;
+            $totalFoodKalori += $foodRecord->recipe->energy * $foodRecord->portion;
+            $totalFoodProtein += $foodRecord->recipe->protein * $foodRecord->portion;
+            $totalFoodFat += $foodRecord->recipe->fat * $foodRecord->portion;
+            $totalFoodCarbohydrate += $foodRecord->recipe->carbohydrate * $foodRecord->portion;
         }
 
         $foodRecordKalori = Rumus::foodRecordKalori($totalFoodKalori, $userKalori);
@@ -35,26 +33,28 @@ class FoodRecordController extends Controller
         $foodRecordFat = Rumus::foodRecordFat($totalFoodFat, $userFat);
         $foodRecordCarbohydrate = Rumus::foodRecordCarbohydrate($totalFoodCarbohydrate, $userCarbohydrate);
 
-        return view('food-record', [
+        return view('foodrecord.index', [
             'title' => 'Food Record',
             "foodRecords" => $user->foodRecord,
             "kalori" => $foodRecordKalori,
             "protein" => $foodRecordProtein,
             "fat" => $foodRecordFat,
-            "carbohydrate" => $foodRecordCarbohydrate
+            "carbohydrate" => $foodRecordCarbohydrate,
+            'families' => Family::where("user_id", auth()->user()->id)->get()
         ]);
     }
-    
+
     public function create()
     {
         $user = User::find(auth()->user()->id);
 
-        if(!$user->age){
+        if (!$user->age) {
             return redirect("/users/$user->username/edit")->with("warning", "Anda harus melengkapi profile terlebih dahulu");
         }
-        
-        return view('', [
-            "families" => Family::all(),
+
+        return view('recipe.add-record', [
+            'title' => 'menambahkan food recipe',
+            'families' => Family::where("user_id", auth()->user()->id)->get()
         ]);
     }
 
@@ -69,7 +69,7 @@ class FoodRecordController extends Controller
 
         $validatedData = $request->validate($rules);
         $validatedData["family_id"] = $request->family_id;
-        if(!$request->family_id){
+        if (!$request->family_id) {
             $validatedData["user_id"] = auth()->user()->id;
         }
 
@@ -81,27 +81,28 @@ class FoodRecordController extends Controller
     public function show($id)
     {
         $foodRecord = FoodRecord::find($id)->where("user_id", auth()->user()->id);
-        
-        if(!$foodRecord){
+
+        if (!$foodRecord) {
             abort(404);
         }
 
-        return view("", [
+        return view("foodrecord.show", [
+            'title' => $foodRecord->title,
             "foodRecord" => $foodRecord
-        ]); 
+        ]);
     }
 
     public function edit($id)
     {
         $foodRecord = FoodRecord::find($id)->where("user_id", auth()->user()->id);
-        
-        if(!$foodRecord){
+
+        if (!$foodRecord) {
             abort(404);
         }
 
         return view("", [
             "foodRecord" => $foodRecord
-        ]); 
+        ]);
     }
 
     public function update(Request $request, FoodRecord $foodRecord)
