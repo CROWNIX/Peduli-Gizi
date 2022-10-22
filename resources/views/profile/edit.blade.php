@@ -11,9 +11,21 @@
         @csrf
         {{-- foto Profile --}}
         <section class="flex flex-col items-center mt-24 mb-4">
-            <x-fotoProfile></x-fotoProfile>
+            <x-fotoProfile image="{{ asset('storage/' . $user->image) }}"></x-fotoProfile>
             <input type="file" id="foto" name="image" hidden accept="image/jpg, image/png, image/jpeg">
+            <script>
+                $('#foto').on('change', function() {
+                    const image = $('#foto');
+                    const imgPreview = $('[alt="foto-profile"]');
+                    const ofReader = new FileReader();
+                    ofReader.readAsDataURL(image[0].files[0]);
+                    ofReader.onload = function(ofREvent) {
+                        imgPreview.attr('src', ofREvent.target.result)
+                    }
+                })
+            </script>
         </section>
+
         {{-- End foto profile --}}
         <div class="px-4 mb-20">
             <x-input value="{{ old('name', $user->name) }}" label="Nama Lengkap" name="name" />

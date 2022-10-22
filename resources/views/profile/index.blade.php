@@ -9,6 +9,18 @@
     <section class="flex flex-col items-center mt-24">
         <x-fotoProfile image="{{ asset('storage/' . $user->image) }}"></x-fotoProfile>
         <p class="text-2xl my-3 text-center">{{ auth()->user()->name }}</p>
+        <input type="file" id="foto" name="image" hidden accept="image/jpg, image/png, image/jpeg">
+        <script>
+            $('#foto').on('change', function() {
+                const image = $('#foto');
+                const imgPreview = $('[alt="foto-profile"]');
+                const ofReader = new FileReader();
+                ofReader.readAsDataURL(image[0].files[0]);
+                ofReader.onload = function(ofREvent) {
+                    imgPreview.attr('src', ofREvent.target.result)
+                }
+            })
+        </script>
     </section>
     {{-- End foto profile --}}
 

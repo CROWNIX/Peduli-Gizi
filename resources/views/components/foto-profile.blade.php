@@ -8,15 +8,3 @@
         </span>
     </label>
 </div>
-
-<script>
-    $('#foto').on('change', function() {
-        const image = $('#foto');
-        const imgPreview = $('[alt="foto-profile"]');
-        const ofReader = new FileReader();
-        ofReader.readAsDataURL(image[0].files[0]);
-        ofReader.onload = function(ofREvent) {
-            imgPreview.attr('src', ofREvent.target.result)
-        }
-    })
-</script>
