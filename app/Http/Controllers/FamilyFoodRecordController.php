@@ -55,13 +55,13 @@ class FamilyFoodRecordController extends Controller
 
                             if($makanSiang->count()){
                                 foreach ($makanSiang as $ms) {
-                                    $foodRecords[$day["value"]]["Sarapan"][] = $ms;
+                                    $foodRecords[$day["value"]]["Makan Siang"][] = $ms;
                                 }
                             }
 
                             if($makanMalam->count()){
                                 foreach ($makanMalam as $mm) {
-                                    $foodRecords[$day["value"]]["Sarapan"][] = $mm;
+                                    $foodRecords[$day["value"]]["Makan Malam"][] = $mm;
                                 }
                             }
                         }
