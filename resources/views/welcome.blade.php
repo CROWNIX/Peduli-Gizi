@@ -11,7 +11,7 @@
             {{-- Hero --}}
             <div class="text-center">
                 <h1 class="text-2xl text-black font-semibold">
-                    Halo Rully
+                    Halo {{ auth()->user()->name }}
                 </h1>
                 <p class="text-base text-black">
                     Konsumsi makanan bergizi setiap hari
@@ -27,7 +27,8 @@
                         <p class="text-xs font-semibold my-1">Makanan Sehat <br> Berdasarkan Kriteria</p>
                         <p class="text-xs my-1 font-light italic">Usia - Kebutuhan - Pria / Wanita</p>
 
-                        <button class="mt-2 bg-[#F58634] py-2 px-6 rounded-lg font-semibold text-xs">Cek Disini</button>
+                        <button onclick="window.location.href = '/recipes'"
+                            class="mt-2 bg-[#F58634] py-2 px-6 rounded-lg font-semibold text-xs">Cek Disini</button>
                     </div>
                     <img class="absolute top-10 right-2" src="{{ asset('images/produk/makanan-1.png') }}">
                 </div>
@@ -41,7 +42,8 @@
                         Food Record <br> Mingguan Anda
                     </div>
                     <div class="relative z-10">
-                        <button class="text-sm font-semibold text-[#F58634] bg-white py-2 px-3 rounded-xl">Cek
+                        <button onclick="window.location.href = '/food-records'"
+                            class="text-sm font-semibold text-[#F58634] bg-white py-2 px-3 rounded-xl">Cek
                             Disini</button>
                     </div>
                 </div>

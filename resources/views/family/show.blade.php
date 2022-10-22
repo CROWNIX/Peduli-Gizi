@@ -28,13 +28,13 @@
                     {{ $kalori }}
                 </x-slot>
                 <x-slot name="protein">
-                    {{ $protein }}
+                    {{ $protein . 'g' }}
                 </x-slot>
                 <x-slot name="carbohydrate">
-                    {{ $carbohydrate }}
+                    {{ $carbohydrate . 'g' }}
                 </x-slot>
                 <x-slot name="fat">
-                    {{ $fat }}
+                    {{ $fat . 'g' }}
                 </x-slot>
             </x-foodRecordResult>
         </div>

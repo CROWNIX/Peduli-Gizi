@@ -31,19 +31,19 @@ class Rumus
 
     public static function rumusProtein($userKalori)
     {
-        $totalProtein = 0.15 * $userKalori;
+        $totalProtein = 0.15 * $userKalori / 4;
         return (int)$totalProtein;
     }
 
     public static function rumusFat($userKalori)
     {
-        $totalFat = 0.20 * $userKalori;
+        $totalFat = 0.20 * $userKalori / 9;
         return (int)$totalFat;
     }
 
     public static function rumusCarbohydrate($userKalori)
     {
-        $totalCarbohydrate = 0.65 * $userKalori;
+        $totalCarbohydrate = 0.65 * $userKalori / 4;
         return (int)$totalCarbohydrate;
     }
 

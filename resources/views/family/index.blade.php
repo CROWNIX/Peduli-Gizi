@@ -7,6 +7,25 @@
     </x-topbarMobile>
     {{-- Anggota Keluarga --}}
     <section class="p-4 mt-16">
+        <div class="mb-3">
+            <div class="mb-2 text-center">
+                <h1 class="text-xl font-bold">Kebutuhan Gizi Keluarga</h1>
+            </div>
+            <x-foodRecordResult>
+                <x-slot name="kalori">
+                    {{ $kalori }}
+                </x-slot>
+                <x-slot name="protein">
+                    {{ $protein . 'g' }}
+                </x-slot>
+                <x-slot name="carbohydrate">
+                    {{ $carbohydrate . 'g' }}
+                </x-slot>
+                <x-slot name="fat">
+                    {{ $fat . 'g' }}
+                </x-slot>
+            </x-foodRecordResult>
+        </div>
         <div class="list-family">
             @if ($families->count())
                 @foreach ($families as $family)
