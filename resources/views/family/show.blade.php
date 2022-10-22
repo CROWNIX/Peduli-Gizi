@@ -4,9 +4,10 @@
 
     <x-topbarMobile title="{{ $title }}">
         <form action="/families/{{ $family->name }}" class="d-inline" method="post" enctype="multipart/form-data">
-            @method("delete")
+            @method('delete')
             @csrf
-            <button type="submit" class="material-icons text-red-500 hover:text-red-500 focus:text-red-500 cursor-pointer"
+            <button type="submit"
+                class="material-icons text-red-500 hover:text-red-500 focus:text-red-500 cursor-pointer"
                 style="font-size: 28px" onclick="return confirm('Are you sure ?')">
                 delete_forever
             </button>
@@ -17,8 +18,21 @@
         @method('PUT')
         @csrf
         <section class="flex flex-col items-center mt-20">
-            <x-fotoProfile image="{{ asset('storage/' . $family->image) }}"></x-fotoProfile>
+            <x-fotoProfile
+                image="{{ str_contains($user->image, 'https://') ? $user->image : asset('storage/' . $user->image) }}">
+            </x-fotoProfile>
             <input type="file" id="foto" name="image" hidden accept="image/jpg, image/png, image/jpeg">
+            <script>
+                $('#foto').on('change', function() {
+                    const image = $('#foto');
+                    const imgPreview = $('[alt="foto-profile"]');
+                    const ofReader = new FileReader();
+                    ofReader.readAsDataURL(image[0].files[0]);
+                    ofReader.onload = function(ofREvent) {
+                        imgPreview.attr('src', ofREvent.target.result)
+                    }
+                })
+            </script>
         </section>
         {{-- End foto profile --}}
         <div class="px-4 mb-4">

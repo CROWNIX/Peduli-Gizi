@@ -11,15 +11,26 @@
         <section class="flex flex-col items-center mt-24">
             <x-fotoProfile image="{{ asset('images/profile/default.jpg') }}"></x-fotoProfile>
             <input type="file" id="foto" name="image" hidden accept="image/jpg, image/png, image/jpeg">
+            <script>
+                $('#foto').on('change', function() {
+                    const image = $('#foto');
+                    const imgPreview = $('[alt="foto-profile"]');
+                    const ofReader = new FileReader();
+                    ofReader.readAsDataURL(image[0].files[0]);
+                    ofReader.onload = function(ofREvent) {
+                        imgPreview.attr('src', ofREvent.target.result)
+                    }
+                })
+            </script>
         </section>
         {{-- End foto profile --}}
 
         {{-- Form Edit --}}
         <div class="px-4 mb-20">
-            @error("name")
-            <div class="px-3 py-3 bg-pink-600 text-center">
-                <span>{{ $message }}</span>
-            </div>
+            @error('name')
+                <div class="px-3 py-3 bg-pink-600 text-center">
+                    <span>{{ $message }}</span>
+                </div>
             @enderror
             <x-input value="{{ old('name') }}" label="Nama Lengkap" name="name" />
             <x-select name="gender" label="Jenis Kelamin">
