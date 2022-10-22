@@ -19,7 +19,7 @@
         @csrf
         <section class="flex flex-col items-center mt-20">
             <x-fotoProfile
-                image="{{ str_contains($user->image, 'https://') ? $user->image : asset('storage/' . $user->image) }}">
+                image="{{ str_contains($family->image, 'https://') ? $family->image : asset('storage/' . $family->image) }}">
             </x-fotoProfile>
             <input type="file" id="foto" name="image" hidden accept="image/jpg, image/png, image/jpeg">
             <script>
