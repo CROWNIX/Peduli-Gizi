@@ -14,9 +14,15 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $gender = ["laki-laki", "perempuan"];
+        $key = array_rand($gender);
+
         return [
-            'name' => $this->faker->name(),
+            'username' => $this->faker->userName(),
+            "role_id" => 2,
             'email' => $this->faker->unique()->safeEmail(),
+            "age" => mt_rand(10, 50),
+            "gender" => $gender[$key],
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),

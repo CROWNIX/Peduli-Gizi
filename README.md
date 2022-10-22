@@ -34,7 +34,16 @@ Aplikasi yang membantu anda mencukupi gizi sehari-hari
 Peduli Gizi dibuat dengan 
 
 * [Laravel](https://laravel.com/)
+* [Tailwindcss](https://tailwindcss.com/)
 * [Mysql](https://mysql.com/)
+
+### Library
+
+Peduli Gizi Menggunakan Library
+* [Swipper.js](https://swiperjs.com/)
+* [Google Font](https://fonts.google.com/)
+* [Jquery](https://jquery.com/)
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -66,5 +75,11 @@ Setelah proses installasi selesai. jalankan server dengan perintah berikut
   php artisan serve
 ```
 
+Env google
+
+```bash
+  GOOGLE_CLIENT_ID = 531679190409-4s79pdaaq5fs45ooi5baos14juvu2ddu.apps.googleusercontent.com
+  GOOGLE_CLIENT_SECRET = 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
+```
 <p align="right">(<a href="#top">back to top</a>)</p>
 

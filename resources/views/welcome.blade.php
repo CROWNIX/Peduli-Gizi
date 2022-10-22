@@ -1,132 +1,587 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<x-customer title="{{ $title }}">
 
-        <title>Laravel</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    {{-- Mobile Version --}}
+    @auth
+        <section class="md:hidden block mt-12">
+            {{-- Navbar Mobile --}}
+            @component('components.navbar')
+            @endcomponent
+            {{-- End Navbar Mobile --}}
+            {{-- Hero --}}
+            <div class="text-center">
+                <h1 class="text-2xl text-black font-semibold">
+                    Halo {{ auth()->user()->name }}
+                </h1>
+                <p class="text-base text-black">
+                    Konsumsi makanan bergizi setiap hari
+                </p>
+            </div>
+            {{-- End Hero --}}
 
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.dark\:text-gray-500{--tw-text-opacity:1;color:#6b7280;color:rgba(107,114,128,var(--tw-text-opacity))}}
-        </style>
+            {{-- Food Healty --}}
+            <section class="p-4">
+                <div class="p-6 relative text-white bg-gradient-to-r from-[#69B550] via-[#69B550] to-white rounded-3xl">
+                    <div class="w-2/3">
+                        <h3 class="text-xl font-bold">Food Healty</h3>
+                        <p class="text-xs font-semibold my-1">Makanan Sehat <br> Berdasarkan Kriteria</p>
+                        <p class="text-xs my-1 font-light italic">Usia - Kebutuhan - Pria / Wanita</p>
 
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
+                        <button onclick="window.location.href = '/recipes'"
+                            class="mt-2 bg-[#F58634] py-2 px-6 rounded-lg font-semibold text-xs">Cek Disini</button>
+                    </div>
+                    <img class="absolute top-10 right-2" src="{{ asset('images/produk/makanan-1.png') }}">
                 </div>
-            @endif
-
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
+            </section>
+            {{-- End Food Healty --}}
+            {{-- Food Record --}}
+            <section class="p-4 text-white">
+                <div
+                    class="bg-[#F58634] relative px-8 py-3 flex justify-between items-center rounded-3xl before:block before:absolute before:bg-[#69B550] before:w-2/5 before:h-full before:top-0 before:right-0 before:z-0 overflow-hidden before:rounded-bl-full">
+                    <div class="text-base font-semibold">
+                        Food Record <br> Mingguan Anda
+                    </div>
+                    <div class="relative z-10">
+                        <button onclick="window.location.href = '/food-records'"
+                            class="text-sm font-semibold text-[#F58634] bg-white py-2 px-3 rounded-xl">Cek
+                            Disini</button>
+                    </div>
                 </div>
+            </section>
+            {{-- End Food Record --}}
 
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
+            {{-- Resep Makanan --}}
+            <section class="p-4">
+                <h3 class="text-xl ml-2">Resep Makanan Sehat</h3>
+                <div class="swiper resep-makanan my-2">
+                    <div class="swiper-wrapper">
+                        @foreach ($recipes as $recipe)
+                            <div class="swiper-slide flex justify-center items-center flex-col bg-[#FFF2F0] p-4 rounded-3xl"
+                                onclick="window.location.href = '/recipes/{{ $recipe->slug }}'">
+                                <img src="{{ asset('images/produk/resep-1.png') }}">
+                                <p class="text-base text-[#4D0A00]"> {{ $recipe->title }}</p>
                             </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
+                        @endforeach
+                    </div>
+                </div>
+            </section>
+            {{-- End Resep Makanan --}}
+        </section>
+    @else
+        <section class="md:hidden block bg-gradient-to-b from-[#69B550] via-orange-200 to-[#69B550] overflow-x-hidden">
+            <nav class="sticky top-0 z-50 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
+                <div class="container flex flex-wrap justify-between items-center mx-auto">
+                    <div class="text-center pl-8 text-white">
+                        <h1 class="text-lg font-bold">Peduli Gizi</h1>
+                        <p class="text-xs">Cukupi Gizi Setiap Hari</p>
+                    </div>
+                    <button data-collapse-toggle="mobile-menu" type="button" id="btn-toggle"
+                        class="inline-flex items-center bg-[#F58634] p-2 ml-3 text-sm text-white rounded-lg md:hidden hover:bg-[#F58634] focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                        aria-controls="mobile-menu-2" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div class="hidden w-full" id="mobile-menu">
+                        <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+                            <li>
+                                <a href="#"
+                                    class="block py-2 pr-4 pl-3 text-white bg-[#F58634] rounded dark:text-white"
+                                    aria-current="page">beranda</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#F58634] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">kebutuhan
+                                    gizi</a>
+                            </li>
+                            <li>
+                                <a href="/recipes"
+                                    class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#F58634] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">resep
+                                    makanan</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="block py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-[#F58634] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">kontak</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="hero relative">
+                <div class="absolute top-5 left-5">
+                    <h1 class="text-6xl text-[#F58634] font-black outline-blue-700">Peduli <br> Gizi</h1>
+                </div>
+                <img src="/images/content/hero-mobile.svg" class="relative top-[-60px] right-[-60px]">
+                <div class="text-lg px-5 relative top-[-40px]">Aplikasi yang membantu anda mencukupi gizi setiap hari
+                </div>
+            </div>
+            <div class="px-4 text-center">
+                <h4 class="font-bold text-lg">Kebutuhan Gizi Berdasarkan Kategori</h4>
+                <div class="grid grid-cols-1 px-4 justify-center mt-2">
+                    <button class="bg-[#69B550] text-white font-bold text-lg py-1 rounded-full my-2">Usia</button>
+                    <button class="bg-[#69B550] text-white font-bold text-lg py-1 rounded-full my-2">Jenis
+                        Kelamin</button>
+                    <button class="bg-[#69B550] text-white font-bold text-lg py-1 rounded-full my-2">Kebutuhan</button>
+                </div>
+            </div>
+            <div class="px-4">
+                <div class="text-center">
+                    <h4 class="font-bold text-base">Resep Sehat beserta kadar Gizi bagi tubuh</h4>
+                </div>
+                <div class="swiper recipe-mobile mt-2">
+                    <div class="swiper-wrapper">
+                        @foreach ($recipes as $recipe)
+                            <div class="swiper-slide">
+                                <div class="rounded-xl bg-gradient-to-b p-[3px] from-[#F58634] to-[#69B550] shadow-lg cursor-pointer hover:from-[#69B550] hover:to-[#F58634] duration-200 hover:scale-95"
+                                    onclick="window.location.href = '/recipes/{{ $recipe->slug }}'">
+                                    <div class="flex flex-col justify-between h-full bg-white rounded-lg p-2">
+                                        <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk"
+                                            class="w-full">
+                                        <div class="title text-base font-bold text-black my-2">
+                                            {{ $recipe->title }}
+                                        </div>
+                                        <p class="text-xs font-extralight text-black">Gizi per porsi</p>
+                                        <div class="grid grid-cols-2 gap-0">
+                                            <p class="text-2xs font-normal my-0 text-black">Energi :
+                                                {{ $recipe->energy }} kalori
+                                            </p>
+                                            <p class="text-2xs font-normal my-0 text-black">Protein :
+                                                {{ $recipe->protein }} g</p>
+                                            <p class="text-2xs font-normal my-0 text-black">Lemak :
+                                                {{ $recipe->fat }} g</p>
+                                            <p class="text-2xs font-normal my-0 text-black">Karbohidrat :
+                                                {{ $recipe->carbohydrate }} g
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination text-[#F58634]"></div>
+                </div>
+                <div class="grid grid-cols-1 my-2">
+                    <button class="text-white rounded-full py-1 bg-[#69B550]">Lainnya</button>
+                </div>
+            </div>
+            <section class="p-4">
+                <h2 class="text-2xl font-bold text-center mb-3">Pencapaian Mingguan</h2>
+                <div class="bg-[#69B550] text-center p-4 text-white rounded-xl text-lg">
+                    <h5 class="capitalize">Budget Kalori</h5>
+                    <div class="w-full h-9 bg-gray-200 rounded-xl dark:bg-gray-700">
+                        <div class="h-9 bg-[#F58634] rounded-xl dark:bg-blue-500 flex items-center justify-center"
+                            style="width: 45%">45%
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="protein">
+                            <h5 class="capitalize">protein</h5>
+                            <div class="w-full h-9 bg-gray-200 rounded-xl dark:bg-gray-700">
+                                <div class="h-9 bg-[#F58634] rounded-xl dark:bg-blue-500 flex items-center justify-center"
+                                    style="width: 28.9%">28,9%
                                 </div>
                             </div>
                         </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                        <div class="karbohidrat">
+                            <h5 class="capitalize">karbohidrat</h5>
+                            <div class="w-full h-9 bg-gray-200 rounded-xl dark:bg-gray-700">
+                                <div class="h-9 bg-[#F58634] rounded-xl dark:bg-blue-500 flex items-center justify-center"
+                                    style="width: 45%">45%
                                 </div>
                             </div>
                         </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
+                        <div class="lemak">
+                            <h5 class="capitalize">lemak</h5>
+                            <div class="w-full h-9 bg-gray-200 rounded-xl dark:bg-gray-700">
+                                <div class="h-9 bg-[#F58634] rounded-xl dark:bg-blue-500 flex items-center justify-center"
+                                    style="width: 45%">45%
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
-
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
-
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
-                            </a>
-
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
-                            </a>
+                <div class="px-3">
+                    <div class="outline outline-[#69B550] bg-white text-black p-4 rounded-lg my-4">
+                        <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
+                            <h6 class="text-2xl capitalize text-black">sarapan</h6>
+                            <span class="material-icons text-[#69B550]" style="font-size: 42px">
+                                add_circle_outline
+                            </span>
+                        </div>
+                        <div class="empty flex justify-center items-center py-4">
+                            <h4 class="text-2xl text-zinc-500">Makan apa hari ini?</h4>
                         </div>
                     </div>
+                    <div class="outline outline-[#69B550] bg-white text-black p-4 rounded-lg my-4">
+                        <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
+                            <h6 class="text-2xl capitalize text-black">makan siang</h6>
+                            <span class="material-icons text-[#69B550]" style="font-size: 42px">
+                                add_circle_outline
+                            </span>
+                        </div>
+                        <div class="">
+                            <ol class="pl-5 mt-2 space-y-1 list-decimal">
+                                <li>Soto ayam kediri</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="outline outline-[#69B550] bg-white text-black p-4 rounded-lg my-4">
+                        <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
+                            <h6 class="text-2xl capitalize text-black">makan malam</h6>
+                            <span class="material-icons text-[#69B550]" style="font-size: 42px">
+                                add_circle_outline
+                            </span>
+                        </div>
+                        <div class="">
+                            <ol class="pl-5 mt-2 space-y-1 list-decimal">
+                                <li>Sayur asam pedas</li>
+                                <li>Jus apel</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="flex justify-center items-center">
+                        <img src="{{ asset('images/logo/logo-with-text.svg') }}" alt="" srcset="">
+                    </div>
+                    <div class="flex justify-center items-end">
+                        &copy 2022 Peduli Gizi. All Rights Reserved
+                    </div>
+                </div>
+            </footer>
+        </section>
+        <script>
+            let navMobile = $('#mobile-menu');
+            $('#btn-toggle').on('click', function() {
+                navMobile.toggleClass('hidden')
+            })
+        </script>
+    @endauth
+    {{-- End Mobile Version --}}
 
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+
+    {{-- Desktop Version --}}
+    <section class="hidden md:block">
+        <nav
+            class="invisible md:visible navbar navbar-dekstop absolute w-full py-4 px-32 md:flex md:items-center md:justify-between z-10 duration-100">
+            <div class="flex justify-between items-center">
+                <img src="{{ asset('images/logo/navbar.svg') }}" class="w-16">
+            </div>
+            <ul
+                class="nav-items md:flex md:items-center z-[-1] md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500">
+                <li class="mx-4 my-6 md:my-0">
+                    <a href="#" class="text-xl hover:text-[#F58634] duration-200 capitalize">beranda</a>
+                </li>
+                <li class="mx-4 my-6 md:my-0">
+                    <a href="#" class="text-xl hover:text-[#F58634] duration-200 capitalize">kebutuhan gizi</a>
+                </li>
+                <li class="mx-4 my-6 md:my-0">
+                    <a href="#" class="text-xl hover:text-[#F58634] duration-200 capitalize">resep makanan</a>
+                </li>
+                <li class="mx-4 my-6 md:my-0">
+                    <a href="#" class="text-xl hover:text-[#F58634] duration-200 capitalize">kontak</a>
+                </li>
+            </ul>
+            @auth
+            @else
+                <a href="/login"
+                    class="outline outline-[#F58634] text-[#F58634] capitalize bg-white font-[Poppins] font-bold text-xl duration-500 px-8 py-1 mx-4 hover:bg-[#F58634] hover:text-white hover:outline-white rounded cursor-pointer"
+                    style="border-radius: 16px 32px 0px 16px">
+                    masuk / daftar
+                </a>
+            @endauth
+
+        </nav>
+        {{-- Bagian Hero Section --}}
+        <section class="invisible md:visible hero relative overflow-hidden">
+            <div
+                class="flex justify-between before:absolute before:bg-blue-500 before:h-full before:w-1/3 before:top-0 before:right-[-120px] before:z-[-1] before:rounded-bl-full before:bg-gradient-to-b before:from-green-600 before:to-orange-200">
+                <div class="text w-1/4 ml-32 my-36">
+                    <p class="text-lg">Aplikasi yang membantu anda mencukupi gizi setiap hari</p>
+                    <h3 class="text-6xl capitalize font-extrabold text-[#F58634] my-4">peduli gizi</h3>
+                    <p class="text-lg">Kita mendapat berbagai manfaat dari zat gizi, di antaranya mengatur metabolisme
+                        tubuh, memelihara dan
+                        mengganti jaringan tubuh, mendukung pertumbuhan, serta berperan dalam mekanisme pertahanan tubuh
+                        dan
+                        sebagainya.</p>
+                    <p class="text-lg my-4">Pastikan gizimu tercukupi setiap hari dengan mudah bersama kami.</p>
+
+                    <a href="/search"
+                        class="cursor-pointer bg-green-500 mb-4 py-2 px-6 rounded-xl text-white text-lg capitalize font-extrabold font-[poppins]">
+                        explore
+                    </a>
+
+                    <div class="swiper mySwiper mt-8">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" style="border-radius: 120px 30px 0 0">
+                                <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk"
+                                    class="w-full">
+                            </div>
+                            <div class="swiper-slide" style="border-radius: 120px 30px 0 0">
+                                <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk"
+                                    class="w-full">
+                            </div>
+                            <div class="swiper-slide" style="border-radius: 120px 30px 0 0">
+                                <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk"
+                                    class="w-full">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img src="/images/content/hero.svg" class="relative top-[-60px]">
+            </div>
+        </section>
+        <section class="invisible md:visible description relative top-[-80px] mx-32">
+            <div class="">
+                <h1 class="text-3xl font-bold text-black">Kebutuhan Gizi Berdasarkan Kategori</h1>
+                <div class="flex justify-between items-center">
+                    <div class="w-1/3">
+                        <div
+                            class="bg-green-500 capitalize text-3xl font-bold text-white text-center py-2 px-6 my-4 rounded-xl">
+                            usia
+                        </div>
+                        <div
+                            class="bg-green-500 capitalize text-3xl font-bold text-white text-center py-2 px-6 my-4 rounded-xl">
+                            jenis kelamin
+                        </div>
+                        <div
+                            class="bg-green-500 capitalize text-3xl font-bold text-white text-center py-2 px-6 my-4 rounded-xl">
+                            kebutuhan
+                        </div>
+                    </div>
+                    <div class="pl-4">
+                        <p class="text-lg my-4">Kebutuhan GIZI setiap orang pasti berbeda, dan faktor-faktor seperti
+                            ukuran
+                            tubuh,
+                            massa otot, aktivitas fisik, dan penyakit, akan membuat
+                            kebutuhan nutrisi kita ikut berubah.
+                        </p>
+                        <p class="text-lg my-4">Cek kebutuhan gizi berdasarkan kategori disamping, dan pastikan
+                            kebutuhan
+                            gizi anda
+                            dan keluarga anda tercukupi setiap harinya</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </body>
-</html>
+        </section>
+
+        {{-- Resep Sehat --}}
+        <section class="invisible md:visible mx-32 resep-sehat">
+            {{-- judul --}}
+            <h4 class="text-3xl font-bold text-black">
+                Resep Sehat beserta kadar Gizi bagi tubuh
+            </h4>
+            {{-- deskripsi --}}
+            <p class="my-3">Kumpulan resep bergizi yang mudah diterapkan, sebagai masakan rumah beserta kadar gizinya
+            </p>
+            {{-- produk --}}
+
+            <div class="my-8 grid grid-cols-3 gap-6">
+                {{-- daftar produk --}}
+                @foreach ($recipes as $recipe)
+                    <div class="rounded-xl bg-gradient-to-b p-[6px] from-[#F58634] to-[#69B550] shadow-lg cursor-pointer hover:from-[#69B550] hover:to-[#F58634] duration-200 hover:scale-105"
+                        onclick="window.location.href = '/recipes/{{ $recipe->slug }}'">
+                        <div class="flex flex-col justify-between h-full bg-white rounded-lg p-4">
+                            <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk"
+                                class="w-full">
+                            <div class="title text-xl font-bold text-black my-2">
+                                {{ $recipe->title }}
+                            </div>
+                            <p class="text-md font-extralight my-2 text-black">Gizi per porsi</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <p class="text-md font-normal my-0 text-black">Energi : {{ $recipe->energy }} kalori
+                                </p>
+                                <p class="text-md font-normal my-0 text-black">Protein : {{ $recipe->protein }} g</p>
+                                <p class="text-md font-normal my-0 text-black">Lemak : {{ $recipe->fat }} g</p>
+                                <p class="text-md font-normal my-0 text-black">Karbohidrat :
+                                    {{ $recipe->carbohydrate }} g
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <button
+                class="shadow-lg text-4xl font-extrabold text-white bg-green-500 hover:bg-white hover:text-green-500 duration-500 hover:outline hover:outline-4 hover:outline-green-500 capitalize rounded-xl py-2 px-14">
+                lainnya
+            </button>
+        </section>
+
+        {{-- Food Record --}}
+        <section class="invisible md:visible mx-32 my-10 resep-sehat">
+            {{-- judul --}}
+            <h4 class="text-3xl font-bold text-black">
+                Food Record
+            </h4>
+            {{-- deskripsi --}}
+            <p class="my-3">Monitoring untuk memastikan kebutuhan gizi terpenuhi dengan catatan makanan mingguan</p>
+            <div class="outline outline-[#F58634] outline-1 p-8 rounded-2xl px-12 my-6">
+                {{-- header --}}
+                <div class="flex justify-between items-center">
+                    {{-- profile --}}
+                    <div class="flex justify-between items-center">
+                        <img class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
+                            src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="" />
+                        <span class="text-2xl font-extrabold ml-3">Halo Rully,</span>
+                    </div>
+                    <div
+                        class="cursor-pointer bg-green-500 rounded-xl text-white flex items-center py-2 px-8 hover:bg-white hover:text-green-500 duration-500 hover:outline hover:outline-4 hover:outline-green-500">
+                        <span class="material-icons">
+                            calendar_today
+                        </span>
+                        <span class="capitalize text-2xl ml-2">
+                            senin
+                        </span>
+                    </div>
+                </div>
+
+                <div class="bg-[#F58634] my-4 rounded-xl p-8 text-white">
+                    <h5 class="text-xl">Budget Kalori</h5>
+                    <div class="w-full my-4 h-9 bg-gray-200 rounded-xl dark:bg-gray-700">
+                        <div class="h-9 bg-[#69B550] rounded-xl dark:bg-blue-500 flex items-center justify-center"
+                            style="width: 45%">45%
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="protein">
+                            <h5 class="text-xl capitalize">protein</h5>
+                            <div class="w-full my-4 h-9 bg-gray-200 rounded-xl dark:bg-gray-700">
+                                <div class="h-9 bg-[#69B550] rounded-xl dark:bg-blue-500 flex items-center justify-center"
+                                    style="width: 45%">45%
+                                </div>
+                            </div>
+                        </div>
+                        <div class="karbohidrat">
+                            <h5 class="text-xl capitalize">karbohidrat</h5>
+                            <div class="w-full my-4 h-9 bg-gray-200 rounded-xl dark:bg-gray-700">
+                                <div class="h-9 bg-[#69B550] rounded-xl dark:bg-blue-500 flex items-center justify-center"
+                                    style="width: 45%">45%
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lemak">
+                            <h5 class="text-xl capitalize">lemak</h5>
+                            <div class="w-full my-4 h-9 bg-gray-200 rounded-xl dark:bg-gray-700">
+                                <div class="h-9 bg-[#69B550] rounded-xl dark:bg-blue-500 flex items-center justify-center"
+                                    style="width: 45%">45%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-[#F58634] my-4 rounded-xl p-8 grid grid-cols-3 gap-4">
+                    <div class="bg-white text-black p-4 rounded-lg">
+                        <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
+                            <h6 class="text-2xl capitalize text-black">sarapan</h6>
+                            <span class="material-icons text-green-500" style="font-size: 42px">
+                                add_circle_outline
+                            </span>
+                        </div>
+                        <div class="empty flex justify-center items-center py-4">
+                            <h4 class="text-2xl text-zinc-500">Makan apa hari ini?</h4>
+                        </div>
+                    </div>
+                    <div class="bg-white text-black p-4 rounded-lg">
+                        <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
+                            <h6 class="text-2xl capitalize text-black">makan siang</h6>
+                            <span class="material-icons text-green-500" style="font-size: 42px">
+                                add_circle_outline
+                            </span>
+                        </div>
+                        <div class="">
+                            <ol class="pl-5 mt-2 space-y-1 list-decimal">
+                                <li>Soto ayam kediri</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="bg-white text-black p-4 rounded-lg">
+                        <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
+                            <h6 class="text-2xl capitalize text-black">makan malam</h6>
+                            <span class="material-icons text-green-500" style="font-size: 42px">
+                                add_circle_outline
+                            </span>
+                        </div>
+                        <div class="">
+                            <ol class="pl-5 mt-2 space-y-1 list-decimal">
+                                <li>Soto ayam kediri</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button
+                class="shadow-lg text-4xl font-extrabold text-white bg-green-500 hover:bg-white hover:text-green-500 duration-500 hover:outline hover:outline-4 hover:outline-green-500 capitalize rounded-xl py-2 px-14">
+                masuk
+            </button>
+        </section>
+
+        <footer class="invisible md:visible bg-gradient-to-l from-orange-50 to-orange-100 p-8">
+            <div class="text-center">
+                <h3 class="text-6xl capitalize font-extrabold text-[#F58634] my-4">peduli gizi</h3>
+                <p class="text-lg">Aplikasi yang membantu anda mencukupi gizi setiap hari</p>
+                <div class="flex justify-center">
+                    <div class="bg-white px-4 rounded-full mx-2">👀 Insights</div>
+                    <div class="bg-white px-4 rounded-full mx-2">👋 Contact</div>
+                </div>
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="flex justify-center items-center">
+                    <img src="{{ asset('images/logo/logo-with-text.svg') }}" alt="" srcset="">
+                </div>
+                <div class="flex justify-center items-end">
+                    &copy 2022 Peduli Gizi. All Rights Reserved
+                </div>
+                <div class="flex justify-center items-center">
+                    <img src="{{ asset('images/logo/logo-with-text.svg') }}" alt="" srcset="">
+                </div>
+            </div>
+        </footer>
+    </section>
+    <script>
+        $(window).scroll(function() {
+            let navbar = $('.navbar-dekstop');
+            navbar.toggleClass('bg-white sticky top-0 rounded-b-lg shadow', $(this).scrollTop() > navbar
+                .height());
+            if ($(this).scrollTop() > navbar.height()) {
+                navbar.removeClass('.absolute')
+            } else {
+                navbar.addClass('.absolute')
+            }
+        });
+    </script>
+    @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    @endpush
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "cards",
+            grabCursor: true,
+        });
+        var recipesMoble = new Swiper(".recipe-mobile", {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+        var recipesMoble2 = new Swiper(".resep-makanan", {
+            slidesPerView: 2,
+            spaceBetween: 10,
+        });
+    </script>
+</x-customer>
