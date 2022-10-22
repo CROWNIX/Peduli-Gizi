@@ -3,13 +3,15 @@
     @component('components.navbar')
     @endcomponent
     {{-- topbar --}}
-    <x-topbarMobile title="{{ $recipe->title }}">
-        <a href="#">
-            <span class="material-icons text-red-500 hover:text-red-500 focus:text-red-500 cursor-pointer"
-                style="font-size: 28px">
+    <x-topbarMobile title="{{ $foodRecord->recipe->title }}">
+        <form action="/food-records/{{ $foodRecord->id }}" class="d-inline" method="post">
+            @method("delete")
+            @csrf
+            <button type="submit" class="material-icons text-red-500 hover:text-red-500 focus:text-red-500 cursor-pointer"
+                style="font-size: 28px" onclick="return confirm('Are you sure ?')">
                 delete_forever
-            </span>
-        </a>
+            </button>
+        </form>
     </x-topbarMobile>
     {{-- End top bar --}}
 
@@ -17,14 +19,14 @@
     <section class="p-4 mt-20 mb-20">
         <div>
             <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk" class="w-full rounded-xl">
-            <div class="text-center text-xl font-bold my-3">{{ $recipe->title }}</div>
+            <div class="text-center text-xl font-bold my-3">{{ $foodRecord->recipe->title }}</div>
             <div class="bg-gray-200 p-4">
                 <div class="text-center text-lg font-bold text-[#F58634] mb-2">Gizi per porsi</div>
                 <div class="grid grid-cols-2">
-                    <p>Energi : {{ $recipe->energy }} kalori </p>
-                    <p>Lemak : {{ $recipe->fat }} g</p>
-                    <p>Protein : {{ $recipe->protein }} g</p>
-                    <p>Karbohidrat : {{ $recipe->carbohydrate }} g</p>
+                    <p>Energi : {{ $foodRecord->recipe->energy }} kalori </p>
+                    <p>Lemak : {{ $foodRecord->recipe->fat }} g</p>
+                    <p>Protein : {{ $foodRecord->recipe->protein }} g</p>
+                    <p>Karbohidrat : {{ $foodRecord->recipe->carbohydrate }} g</p>
                 </div>
             </div>
         </div>
@@ -38,10 +40,10 @@
             </button>
         </div>
         <div class="bg-gray-200 p-4 rounded-xl" id="ingridients">
-            {!! $recipe->ingridients !!}
+            {!! $foodRecord->recipe->ingridients !!}
         </div>
         <div class="bg-gray-200 p-4 rounded-xl hidden" id="steps">
-            {!! $recipe->steps !!}
+            {!! $foodRecord->recipe->steps !!}
         </div>
         <script>
             $('#btn-steps').on('click', function() {
