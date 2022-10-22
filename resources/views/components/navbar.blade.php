@@ -23,7 +23,7 @@
             </a>
         </div>
         <div class="text-center">
-            <a href="/food-records"
+            <a href="/food-records/families"
                 class="material-icons-outlined {{ request()->is('food-records*') ? 'text-white bg-[#F58634]' : 'bg-white' }} rounded-full p-2"
                 style="font-size:32px">
                 history

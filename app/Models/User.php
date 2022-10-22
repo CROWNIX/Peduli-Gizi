@@ -17,7 +17,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-    protected $with = ["foodRecord"];
+    // protected $with = ["foodRecord", "family"];
 
     protected $casts = [
         'email_verified_at' => 'datetime',

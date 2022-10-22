@@ -4,11 +4,11 @@
     {{-- Pencapaian Mingguan --}}
     <section class="p-4">
         <h2 class="text-2xl font-bold text-center mb-3">Pencapaian Mingguan</h2>
-        <x-select name="family_id">
-            <option value="">Seluruh Keluarga</option>
-            <option value="{{ auth()->user()->id }}">{{ auth()->user()->name }}</option>
+        <x-select name="family_id" onchange="this.options[this.selectedIndex].value && (window.location = `/food-records${this.options[this.selectedIndex].value}`);">
+            <option value="/families" {{ Request::is("food-records/families") ? "selected" : "" }}>Seluruh Keluarga</option>
+            <option value="/" {{ Request::is("food-records") ? "selected" : "" }}>{{ auth()->user()->name }}</option>
             @foreach ($families as $family)
-                <option value="{{ $family->id }}">{{ $family->name }}</option>
+                <option value="/families/{{ $family->name }}" {{ Request::is("food-records/families/$family->name") ? "selected" : "" }}>{{ $family->name }}</option>
             @endforeach
         </x-select>
 
@@ -30,12 +30,14 @@
         <section class="p-4">
             <div class="swiper hari">
                 <div class="swiper-wrapper">
+                    @foreach (Fungsi::hari() as $day)
                     <div class="swiper-slide bg-[#69B550] p-4 text-center text-white text-lg font-semibold rounded-xl">
-                        Senin
-                    </div>
-                    <div class="swiper-slide bg-[#69B550] p-4 text-center text-white text-lg font-semibold rounded-xl">
+                        {{ $day["name"] }}
+                    </div>        
+                    @endforeach
+                    {{-- <div class="swiper-slide bg-[#69B550] p-4 text-center text-white text-lg font-semibold rounded-xl">
                         Selasa
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="swiper-button-next scale-50 " style="color: #fff !important;"></div>
                 <div class="swiper-button-prev scale-50 " style="color: #fff !important;"></div>
@@ -43,6 +45,7 @@
         </section>
         <div class="swiper resep mb-16">
             <div class="swiper-wrapper">
+                @foreach (Fungsi::hari() as $day)
                 <div class="swiper-slide px-3">
                     <div class="outline outline-[#69B550] bg-white text-black p-4 rounded-lg my-4">
                         <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
@@ -53,10 +56,23 @@
                                 </span>
                             </button>
                         </div>
+                        @if (count($foodRecords[$day["value"]]["Sarapan"]))
+                        <div class="">
+                            <ol class="pl-5 mt-2 space-y-1 list-decimal">
+                                @foreach ($foodRecords[$day["value"]]["Sarapan"] as $foodRecord)
+                                <li onclick="window.location.href = '/food-records/{{ $foodRecord->id }}'">{{ $foodRecord->recipe->title }}</li>
+                                    
+                                @endforeach
+                            </ol>
+                        </div>
+                            
+                        @else
                         <div class="empty flex justify-center items-center py-4">
                             <h4 class="text-2xl text-zinc-500">Makan apa hari ini?</h4>
                         </div>
-                    </div>
+                            
+                        @endif
+                    </div> 
                     <div class="outline outline-[#69B550] bg-white text-black p-4 rounded-lg my-4">
                         <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
                             <h6 class="text-2xl capitalize text-black">makan siang</h6>
@@ -66,11 +82,22 @@
                                 </span>
                             </button>
                         </div>
+                        @if (count($foodRecords[$day["value"]]["Makan Siang"]))
                         <div class="">
                             <ol class="pl-5 mt-2 space-y-1 list-decimal">
-                                <li>Soto ayam kediri</li>
+                                @foreach ($foodRecords[$day["value"]]["Makan Siang"] as $foodRecord)
+                                <li onclick="window.location.href = '/food-records/{{ $foodRecord->id }}'">{{ $foodRecord->recipe->title }}</li>
+                                    
+                                @endforeach
                             </ol>
                         </div>
+                            
+                        @else
+                        <div class="empty flex justify-center items-center py-4">
+                            <h4 class="text-2xl text-zinc-500">Makan apa hari ini?</h4>
+                        </div>
+                            
+                        @endif
                     </div>
                     <div class="outline outline-[#69B550] bg-white text-black p-4 rounded-lg my-4">
                         <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
@@ -82,62 +109,26 @@
                                     </span>
                                 </button>
                         </div>
+                        @if (count($foodRecords[$day["value"]]["Makan Malam"]))
                         <div class="">
                             <ol class="pl-5 mt-2 space-y-1 list-decimal">
-                                <li>Sayur asam pedas</li>
-                                <li>Jus apel</li>
+                                @foreach ($foodRecords[$day["value"]]["Makan Malam"] as $foodRecord)
+                                <li onclick="window.location.href = '/food-records/{{ $foodRecord->id }}'">{{ $foodRecord->recipe->title }}</li>
+                                    
+                                @endforeach
                             </ol>
                         </div>
-                    </div>
-                </div>
-                <div class="swiper-slide px-3">
-                    <div class="outline outline-[#69B550] bg-white text-black p-4 rounded-lg my-4">
-                        <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
-                            <h6 class="text-2xl capitalize text-black">sarapan</h6>
-                            <button onclick="window.location.href = '/recipes'">
-                                <span class="material-icons text-[#69B550]" style="font-size: 42px">
-                                    add_circle_outline
-                                </span>
-                            </button>
-                        </div>
+                            
+                        @else
                         <div class="empty flex justify-center items-center py-4">
                             <h4 class="text-2xl text-zinc-500">Makan apa hari ini?</h4>
                         </div>
-                    </div>
-                    <div class="outline outline-[#69B550] bg-white text-black p-4 rounded-lg my-4">
-                        <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
-                            <h6 class="text-2xl capitalize text-black">makan siang</h6>
-                            <button onclick="window.location.href = '/recipes'">
-                                <span class="material-icons text-[#69B550]" style="font-size: 42px">
-                                    add_circle_outline
-                                </span>
-                            </button>
-                        </div>
-                        <div class="">
-                            <ol class="pl-5 mt-2 space-y-1 list-decimal">
-                                <li>Soto ayam kediri</li>
-                            </ol>
-                        </div>
-                    </div>
-                    <div class="outline outline-[#69B550] bg-white text-black p-4 rounded-lg my-4">
-                        <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
-                            <h6 class="text-2xl capitalize text-black">makan malam</h6>
-                            <span class="material-icons text-[#69B550]" style="font-size: 42px">
-                                <button onclick="window.location.href = '/recipes'">
-                                    <span class="material-icons text-[#69B550]" style="font-size: 42px">
-                                        add_circle_outline
-                                    </span>
-                                </button>
-                        </div>
-                        <div class="">
-                            <ol class="pl-5 mt-2 space-y-1 list-decimal">
-                                <li>Sayur asam pedas</li>
-                                <li>Jus apel</li>
-                            </ol>
-                        </div>
-                    </div>
+                            
+                        @endif
+                    </div> 
                 </div>
-            </div>
+                @endforeach
+            </div>             
             <div class="swiper-button-next scale-50 " style="color: #fff !important;"></div>
             <div class="swiper-button-prev scale-50 " style="color: #fff !important;"></div>
         </div>

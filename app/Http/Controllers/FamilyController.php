@@ -6,7 +6,7 @@ use App\Models\Family;
 use App\Models\UserNeed;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Helpers\Rumus;
+use App\helpers\Rumus;
 use Illuminate\Support\Facades\Storage;
 
 class FamilyController extends Controller
@@ -19,7 +19,6 @@ class FamilyController extends Controller
             return redirect("/users/$user->username/edit")->with("warning", "Anda harus melengkapi profile terlebih dahulu");
         }
 
-        $weight = Rumus::konvertKgToGram($user->weight);
         $kalori = Rumus::rumusKalori($user->gender, $user->age, $user->height, $user->weight);
         $protein = Rumus::rumusProtein($kalori);
         $fat = Rumus::rumusFat($kalori);
@@ -57,19 +56,20 @@ class FamilyController extends Controller
     {
         $checkName = Family::where("user_id", auth()->user()->id)->where("name", $request->name)->first();
 
-        $ruleName = $checkName ? "required|unique" : "required";
+        $ruleName = $checkName ? "required|unique:families" : "required";
 
         $rules = [
             "user_need_id" => "required",
             "name" => $ruleName,
             "gender" => "required",
             "age" => "required",
-            "image" => "image|file"
+            // "image" => "image|file"
         ];
 
         $validatedData = $request->validate($rules);
         $validatedData["weight"] = $request->weight;
         $validatedData["height"] = $request->height ?? 151;
+        $validatedData["user_id"] = auth()->user()->id;
 
         if (!$validatedData["weight"]) {
             $validatedData["weight"] = $request->gender == "laki-laki" ? 61 : 56;
@@ -129,7 +129,6 @@ class FamilyController extends Controller
             "name" => "required",
             "gender" => "required",
             "age" => "required",
-            "image" => "image|file"
         ];
 
         $validatedData = $request->validate($rules);
@@ -148,7 +147,7 @@ class FamilyController extends Controller
             $validatedData["image"] = $request->file("image")->store("images/families");
         }
 
-        Family::where("user_id", $family->iuser_d)
+        Family::where("user_id", $family->user_id)
             ->where("name", $family->name)
             ->update($validatedData);
 
@@ -160,9 +159,11 @@ class FamilyController extends Controller
     {
         $family = Family::where("user_id", auth()->user()->id)->where("name", $name)->first();
 
-        Family::where("user_id", $family->iuser_d)
-            ->where("name", $family->name)
-            ->delete();
+        if($family->image){
+            Storage::delete($family->image);
+        }
+
+        $family->delete();
 
         return redirect("/families")->with("success", "Keluarga berhasil dihapus");
     }

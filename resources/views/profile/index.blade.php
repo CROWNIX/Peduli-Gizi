@@ -7,7 +7,7 @@
     </section>
     {{-- foto Profile --}}
     <section class="flex flex-col items-center mt-24">
-        <x-fotoProfile></x-fotoProfile>
+        <x-fotoProfile image="{{ asset('storage/' . $user->image) }}"></x-fotoProfile>
         <p class="text-2xl my-3 text-center">{{ auth()->user()->name }}</p>
     </section>
     {{-- End foto profile --}}

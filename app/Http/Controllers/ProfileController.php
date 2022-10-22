@@ -13,7 +13,8 @@ class ProfileController extends Controller
     public function index()
     {
         return view("profile.index", [
-            'title' => "Profile"
+            'title' => "Profile",
+            "user" => User::find(auth()->user()->id)
         ]);
     }
 
@@ -42,7 +43,6 @@ class ProfileController extends Controller
 
     public function update(Request $request, User $user)
     {
-        // dd($request->all());
         // $ruleImage = $request->image ? "image|file" : "";
         $rules = [
             "name" => "required",
