@@ -4,11 +4,11 @@
     {{-- Pencapaian Mingguan --}}
     <section class="p-4">
         <h2 class="text-2xl font-bold text-center mb-3">Pencapaian Mingguan</h2>
-        <x-select name="family_id">
-            <option value="" onclick="window.location.href = '/food-records/families'">Seluruh Keluarga</option>
-            <option value="{{ auth()->user()->id }}" onclick="window.location.href = '/food-records/{{ auth()->user()->username }}'">{{ auth()->user()->name }}</option>
+        <x-select name="family_id" onchange="this.options[this.selectedIndex].value && (window.location = `/food-records${this.options[this.selectedIndex].value}`);">
+            <option value="/families" {{ Request::is("food-records/families") ? "selected" : "" }}>Seluruh Keluarga</option>
+            <option value="/" {{ Request::is("food-records") ? "selected" : "" }}>{{ auth()->user()->name }}</option>
             @foreach ($families as $family)
-                <option value="{{ $family->id }}" onclick="window.location.href = '/food-records/families/{{ $family->name }}'">{{ $family->name }}</option>
+                <option value="/families/{{ $family->name }}" {{ Request::is("food-records/families/$family->name") ? "selected" : "" }}>{{ $family->name }}</option>
             @endforeach
         </x-select>
 

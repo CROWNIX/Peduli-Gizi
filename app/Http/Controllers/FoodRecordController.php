@@ -95,16 +95,29 @@ class FoodRecordController extends Controller
         return redirect("/food-records")->with("success", "Food record berhasil ditambahkan");
     }
 
-    public function show(FoodRecord $foodRecord)
+    public function show($id)
     {
+        $foodRecord = FoodRecord::where("user_id", auth()->user()->id)->find($id);
+
+        if(!$foodRecord){
+            abort(404);
+        }
+
+
         return view("foodrecord.show", [
             'title' => $foodRecord->recipe->title,
             "foodRecord" => $foodRecord
         ]);
     }
 
-    public function edit(FoodRecord $foodRecord)
+    public function edit($id)
     {
+        $foodRecord = FoodRecord::where("user_id", auth()->user()->id)->find($id);
+
+        if(!$foodRecord){
+            abort(404);
+        }
+
         return view("", [
             "foodRecord" => $foodRecord
         ]);
