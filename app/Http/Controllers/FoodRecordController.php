@@ -41,7 +41,8 @@ class FoodRecordController extends Controller
             "kalori" => $foodRecordKalori,
             "protein" => $foodRecordProtein,
             "fat" => $foodRecordFat,
-            "carbohydrate" => $foodRecordCarbohydrate
+            "carbohydrate" => $foodRecordCarbohydrate,
+            'families' => Family::where("user_id", auth()->user()->id)->get()
         ]);
     }
 
