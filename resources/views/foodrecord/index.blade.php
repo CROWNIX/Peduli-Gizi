@@ -6,6 +6,7 @@
         <h2 class="text-2xl font-bold text-center mb-3">Pencapaian Mingguan</h2>
         <x-select name="family_id">
             <option value="">Seluruh Keluarga</option>
+            <option value="{{ auth()->user()->id }}">{{ auth()->user()->name }}</option>
             @foreach ($families as $family)
                 <option value="{{ $family->id }}" onclick="window.location.href = '/food-records/families/{{ $family->name }}'">{{ $family->name }}</option>
             @endforeach
@@ -40,15 +41,17 @@
                 <div class="swiper-button-prev scale-50 " style="color: #fff !important;"></div>
             </div>
         </section>
-        <div class="swiper resep">
+        <div class="swiper resep mb-16">
             <div class="swiper-wrapper">
                 <div class="swiper-slide px-3">
                     <div class="outline outline-[#69B550] bg-white text-black p-4 rounded-lg my-4">
                         <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
                             <h6 class="text-2xl capitalize text-black">sarapan</h6>
-                            <span class="material-icons text-[#69B550]" style="font-size: 42px">
-                                add_circle_outline
-                            </span>
+                            <button onclick="window.location.href = '/recipes'">
+                                <span class="material-icons text-[#69B550]" style="font-size: 42px">
+                                    add_circle_outline
+                                </span>
+                            </button>
                         </div>
                         <div class="empty flex justify-center items-center py-4">
                             <h4 class="text-2xl text-zinc-500">Makan apa hari ini?</h4>
@@ -57,9 +60,11 @@
                     <div class="outline outline-[#69B550] bg-white text-black p-4 rounded-lg my-4">
                         <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
                             <h6 class="text-2xl capitalize text-black">makan siang</h6>
-                            <span class="material-icons text-[#69B550]" style="font-size: 42px">
-                                add_circle_outline
-                            </span>
+                            <button onclick="window.location.href = '/recipes'">
+                                <span class="material-icons text-[#69B550]" style="font-size: 42px">
+                                    add_circle_outline
+                                </span>
+                            </button>
                         </div>
                         <div class="">
                             <ol class="pl-5 mt-2 space-y-1 list-decimal">
@@ -71,8 +76,11 @@
                         <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
                             <h6 class="text-2xl capitalize text-black">makan malam</h6>
                             <span class="material-icons text-[#69B550]" style="font-size: 42px">
-                                add_circle_outline
-                            </span>
+                                <button onclick="window.location.href = '/recipes'">
+                                    <span class="material-icons text-[#69B550]" style="font-size: 42px">
+                                        add_circle_outline
+                                    </span>
+                                </button>
                         </div>
                         <div class="">
                             <ol class="pl-5 mt-2 space-y-1 list-decimal">
@@ -86,9 +94,11 @@
                     <div class="outline outline-[#69B550] bg-white text-black p-4 rounded-lg my-4">
                         <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
                             <h6 class="text-2xl capitalize text-black">sarapan</h6>
-                            <span class="material-icons text-[#69B550]" style="font-size: 42px">
-                                add_circle_outline
-                            </span>
+                            <button onclick="window.location.href = '/recipes'">
+                                <span class="material-icons text-[#69B550]" style="font-size: 42px">
+                                    add_circle_outline
+                                </span>
+                            </button>
                         </div>
                         <div class="empty flex justify-center items-center py-4">
                             <h4 class="text-2xl text-zinc-500">Makan apa hari ini?</h4>
@@ -97,9 +107,11 @@
                     <div class="outline outline-[#69B550] bg-white text-black p-4 rounded-lg my-4">
                         <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
                             <h6 class="text-2xl capitalize text-black">makan siang</h6>
-                            <span class="material-icons text-[#69B550]" style="font-size: 42px">
-                                add_circle_outline
-                            </span>
+                            <button onclick="window.location.href = '/recipes'">
+                                <span class="material-icons text-[#69B550]" style="font-size: 42px">
+                                    add_circle_outline
+                                </span>
+                            </button>
                         </div>
                         <div class="">
                             <ol class="pl-5 mt-2 space-y-1 list-decimal">
@@ -111,8 +123,11 @@
                         <div class="flex justify-between items-center border-2 border-white pb-2 border-b-black">
                             <h6 class="text-2xl capitalize text-black">makan malam</h6>
                             <span class="material-icons text-[#69B550]" style="font-size: 42px">
-                                add_circle_outline
-                            </span>
+                                <button onclick="window.location.href = '/recipes'">
+                                    <span class="material-icons text-[#69B550]" style="font-size: 42px">
+                                        add_circle_outline
+                                    </span>
+                                </button>
                         </div>
                         <div class="">
                             <ol class="pl-5 mt-2 space-y-1 list-decimal">
@@ -126,6 +141,9 @@
             <div class="swiper-button-next scale-50 " style="color: #fff !important;"></div>
             <div class="swiper-button-prev scale-50 " style="color: #fff !important;"></div>
         </div>
+        @push('scripts')
+            <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+        @endpush
         <script>
             var hari = new Swiper(".hari", {
                 loop: true,
@@ -152,9 +170,6 @@
                 dropdown.toggleClass('flex');
             })
         </script>
-
-
-
     </section>
     {{-- End Pencapaian Mingguan --}}
 </x-customer>

@@ -5,7 +5,8 @@
     {{-- topbar --}}
     <x-topbarMobile title="{{ $recipe->title }}">
         <a href="/food-records/create/?recipe={{ $recipe->slug }}">
-            <span class="material-icons hover:text-[#F58634] focus:text-[#F58634] cursor-pointer" style="font-size: 28px">
+            <span class="material-icons text-green-500 hover:text-[#F58634] focus:text-[#F58634] cursor-pointer"
+                style="font-size: 28px">
                 add_circle_outline
             </span>
         </a>

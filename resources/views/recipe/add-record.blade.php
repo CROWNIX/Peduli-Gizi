@@ -42,33 +42,30 @@
                     value="{{ old('name', auth()->user()->name) }}" required readonly>
             </div>
             <div class="mb-2">
-                <label for="first_name" class="blocktext-lg font-medium text-gray-900 dark:text-gray-300">Nama
+                <label for="first_name" class="block text-lg font-medium text-gray-900 dark:text-gray-300">Nama
                     Makanan</label>
                 <input type="text" id="first_name" name="recipe_slug"
                     class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     value="{{ old('recipe_slug', str_replace('-', ' ', request('recipe'))) }}" required readonly>
             </div>
-            <div class="mb-2">
-                <label for="countries" class="block text-lg font-medium text-gray-900 dark:text-gray-400">Hari</label>
-                <select id="countries" required name="day"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected value="">Pilih hari</option>
-                    @foreach (Fungsi::hari() as $hari)
-                        <option value="{{ $hari['value'] }}">{{ $hari['name'] }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="mb-2">
-                <label for="countries" class="block text-lg font-medium text-gray-900 dark:text-gray-400">Jam
-                    Makan</label>
-                <select id="countries" required name="time"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected value="">Pilih jam makan</option>
-                    @foreach (Fungsi::jamMakan() as $jamMakan)
-                        <option value="{{ $jamMakan['value'] }}">{{ $jamMakan['name'] }}</option>
-                    @endforeach
-                </select>
-            </div>
+            <x-select name="hari" label="Hari" required>
+                <option selected value="">Pilih hari</option>
+                @foreach (Fungsi::hari() as $hari)
+                    <option value="{{ $hari['value'] }}">{{ $hari['name'] }}</option>
+                @endforeach
+            </x-select>
+            <x-select name="time" label="Jam Makan" required>
+                <option selected value="">Pilih jam makan</option>
+                @foreach (Fungsi::jamMakan() as $jamMakan)
+                    <option value="{{ $jamMakan['value'] }}">{{ $jamMakan['name'] }}</option>
+                @endforeach
+            </x-select>
+            <x-select name="porsi" label="Pilih Jumlah Porsi" required>
+                <option value="">pilih porsi</option>
+                <option value="1">1 porsi</option>
+                <option value="2">2 porsi</option>
+                <option value="3">3 porsi</option>
+            </x-select>
             <div class="my-4">
                 <button type="submit" class="bg-[#F58634] rounded-full py-1 w-full text-white text-lg font-bold">
                     Simpan
