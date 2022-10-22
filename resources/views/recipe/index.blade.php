@@ -26,7 +26,8 @@
                 <div class="rounded-xl bg-gradient-to-b p-[3px] from-[#F58634] to-[#69B550] shadow-lg cursor-pointer hover:from-[#69B550] hover:to-[#F58634] duration-200 hover:scale-95"
                     onclick="window.location.href = '/recipes/{{ $recipe->slug }}'">
                     <div class="flex flex-col justify-between h-full bg-white rounded-lg p-2">
-                        <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk" class="w-full">
+                        <img src="{{ asset('images/produk/' . $recipe->image) }}" alt="produk"
+                            class="w-full h-24 object-cover">
                         <div class="title text-base font-bold text-black my-2">
                             {{ $recipe->title }}
                         </div>

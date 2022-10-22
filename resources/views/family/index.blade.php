@@ -7,7 +7,7 @@
     </x-topbarMobile>
     {{-- Anggota Keluarga --}}
     <section class="p-4 mt-16">
-        <div class="mb-3">
+        <div class="mb-3"> 
             <div class="mb-2 text-center">
                 <h1 class="text-xl font-bold">Kebutuhan Gizi Keluarga</h1>
             </div>
