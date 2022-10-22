@@ -19,7 +19,6 @@ class FamilyController extends Controller
             return redirect("/users/$user->username/edit")->with("warning", "Anda harus melengkapi profile terlebih dahulu");
         }
 
-        $weight = Rumus::konvertKgToGram($user->weight);
         $kalori = Rumus::rumusKalori($user->gender, $user->age, $user->height, $user->weight);
         $protein = Rumus::rumusProtein($kalori);
         $fat = Rumus::rumusFat($kalori);

@@ -10,7 +10,6 @@
                 style="font-size: 28px" onclick="return confirm('Are you sure ?')">
                 delete_forever
             </button>
-            <button type="submit" class="badge bg-danger border-0" onclick="return confirm('Are you sure ?')" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"></button>
         </form>
     </x-topbarMobile>
     {{-- foto Profile --}}
