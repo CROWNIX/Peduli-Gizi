@@ -113,6 +113,9 @@
     </section>
     {{-- End Informasi Gizi --}}
 
+    @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    @endpush
     <script>
         var resep = new Swiper(".resep-makanan", {
             slidesPerView: 2,
