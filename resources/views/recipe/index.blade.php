@@ -23,7 +23,7 @@
         <h2 class="text-xl font-bold">Daftar Resep Sehat & Bergizi</h2>
         <div class="grid grid-cols-2 gap-2 mt-2 overflow-y-scroll overflow-x-hidden py-2" style="height: 65vh;">
             @foreach ($recipes as $recipe)
-                <div class="rounded-xl bg-gradient-to-b p-[3px] from-[#F58634] to-[#69B550] shadow-lg cursor-pointer hover:from-[#69B550] hover:to-[#F58634] duration-200 hover:scale-95"
+                <div class="max-h-64 rounded-xl bg-gradient-to-b p-[3px] from-[#F58634] to-[#69B550] shadow-lg cursor-pointer hover:from-[#69B550] hover:to-[#F58634] duration-200 hover:scale-95"
                     onclick="window.location.href = '/recipes/{{ $recipe->slug }}'">
                     <div class="flex flex-col justify-between h-full bg-white rounded-lg p-2">
                         <img src="{{ asset('images/produk/' . $recipe->image) }}" alt="produk"
