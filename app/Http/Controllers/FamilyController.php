@@ -6,7 +6,7 @@ use App\Models\Family;
 use App\Models\UserNeed;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Helpers\Rumus;
+use App\helpers\Rumus;
 use Illuminate\Support\Facades\Storage;
 
 class FamilyController extends Controller

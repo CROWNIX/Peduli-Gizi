@@ -3,7 +3,7 @@
     @endcomponent
 
     <x-topbarMobile title="{{ $title }}">
-        <form action="/families/{{ $family->name }}" class="d-inline" method="post">
+        <form action="/families/{{ $family->name }}" class="d-inline" method="post" enctype="multipart/form-data">
             @method("delete")
             @csrf
             <button type="submit" class="material-icons text-red-500 hover:text-red-500 focus:text-red-500 cursor-pointer"
@@ -18,6 +18,7 @@
         @csrf
         <section class="flex flex-col items-center mt-20">
             <x-fotoProfile image="{{ asset('storage/' . $family->image) }}"></x-fotoProfile>
+            <input type="file" id="foto" name="image" hidden accept="image/jpg, image/png, image/jpeg">
         </section>
         {{-- End foto profile --}}
         <div class="px-4 mb-4">

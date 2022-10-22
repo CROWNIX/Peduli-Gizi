@@ -7,8 +7,8 @@ use App\Models\Family;
 use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Helpers\Rumus;
-use App\Helpers\Fungsi;
+use App\helpers\Rumus;
+use App\helpers\Fungsi;
 use Illuminate\Support\Str;
 
 class FoodRecordController extends Controller
@@ -44,9 +44,9 @@ class FoodRecordController extends Controller
         }
 
         foreach (Fungsi::hari() as $day) {
-                $foodRecords[$day["value"]]["Sarapan"] = $user->foodRecord->where("day", $day["value"])->where("time", "Sarapan");
-                $foodRecords[$day["value"]]["Makan Siang"] = $user->foodRecord->where("day", $day["value"])->where("time", "Makan Siang");
-                $foodRecords[$day["value"]]["Makan Malam"] = $user->foodRecord->where("day", $day["value"])->where("time", "Makan Malam");
+                $foodRecords[$day["value"]]["Sarapan"] = $user->foodRecord->where("day", $day["value"])->where("time", "sarapan");
+                $foodRecords[$day["value"]]["Makan Siang"] = $user->foodRecord->where("day", $day["value"])->where("time", "makan siang");
+                $foodRecords[$day["value"]]["Makan Malam"] = $user->foodRecord->where("day", $day["value"])->where("time", "makan malam");
         }
 
         return view('foodrecord.index', [
@@ -92,7 +92,7 @@ class FoodRecordController extends Controller
 
         FoodRecord::create($validatedData);
 
-        return redirect("/food-records")->with("success", "Food record berhasil ditambahkan");
+        return redirect("/food-records/families")->with("success", "Food record berhasil ditambahkan");
     }
 
     public function show($id)
