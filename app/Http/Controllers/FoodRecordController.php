@@ -35,7 +35,7 @@ class FoodRecordController extends Controller
         $foodRecordFat = Rumus::foodRecordFat($totalFoodFat, $userFat);
         $foodRecordCarbohydrate = Rumus::foodRecordCarbohydrate($totalFoodCarbohydrate, $userCarbohydrate);
 
-        return view('food-record', [
+        return view('foodrecord.index', [
             'title' => 'Food Record',
             "foodRecords" => $user->foodRecord,
             "kalori" => $foodRecordKalori,
@@ -88,7 +88,8 @@ class FoodRecordController extends Controller
             abort(404);
         }
 
-        return view("", [
+        return view("foodrecord.show", [
+            'title' => $foodRecord->title,
             "foodRecord" => $foodRecord
         ]);
     }

@@ -1438,6 +1438,11 @@ video {
   color: rgb(34 197 94 / var(--tw-text-opacity));
 }
 
+.hover\:text-red-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
 .hover\:outline:hover {
   outline-style: solid;
 }
@@ -1462,6 +1467,11 @@ video {
 .focus\:text-\[\#F58634\]:focus {
   --tw-text-opacity: 1;
   color: rgb(245 134 52 / var(--tw-text-opacity));
+}
+
+.focus\:text-red-500:focus {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
 .focus\:outline-none:focus {
