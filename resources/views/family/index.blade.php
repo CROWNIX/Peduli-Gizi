@@ -33,7 +33,7 @@
                         onclick="window.location.href = '/families/{{ $family->name }}'">
                         <div
                             class="bg-gray-400 overflow-hidden text-white w-16 h-16 rounded-full flex justify-center items-center text-3xl">
-                            <img src="{{ asset("storage/" . $family->image) }}" class="h-full object-cover">
+                            <img src="{{ asset("storage/$family->image") }}" class="h-full object-cover">
                         </div>
                         <div class="text-dark text-xl font-bold text-center">
                             {{ $family->name }}

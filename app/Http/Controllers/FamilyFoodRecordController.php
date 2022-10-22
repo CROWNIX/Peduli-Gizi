@@ -6,8 +6,8 @@ use App\Models\FoodRecord;
 use App\Models\Family;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Helpers\Rumus;
-use App\Helpers\Fungsi;
+use App\helpers\Rumus;
+use App\helpers\Fungsi;
 
 class FamilyFoodRecordController extends Controller
 {
@@ -37,15 +37,15 @@ class FamilyFoodRecordController extends Controller
         }
 
         foreach (Fungsi::hari() as $day) {
-                $foodRecords[$day["value"]]["Sarapan"] = $user->foodRecord->where("day", $day["value"])->where("time", "Sarapan");
-                $foodRecords[$day["value"]]["Makan Siang"] = $user->foodRecord->where("day", $day["value"])->where("time", "Makan Siang");
-                $foodRecords[$day["value"]]["Makan Malam"] = $user->foodRecord->where("day", $day["value"])->where("time", "Makan Malam");
+                $foodRecords[$day["value"]]["Sarapan"] = $user->foodRecord->where("day", $day["value"])->where("time", "sarapan");
+                $foodRecords[$day["value"]]["Makan Siang"] = $user->foodRecord->where("day", $day["value"])->where("time", "makan siang");
+                $foodRecords[$day["value"]]["Makan Malam"] = $user->foodRecord->where("day", $day["value"])->where("time", "makan malam");
                 if($user->family->count()){
                     foreach ($user->family as $family) {
                         if($family->foodRecord->count()){
-                            $sarapan = $family->foodRecord->where("day", $day["value"])->where("time", "Sarapan");
-                            $makanSiang = $family->foodRecord->where("day", $day["value"])->where("time", "Makan Siang");
-                            $makanMalam = $family->foodRecord->where("day", $day["value"])->where("time", "Makan Malam");
+                            $sarapan = $family->foodRecord->where("day", $day["value"])->where("time", "sarapan");
+                            $makanSiang = $family->foodRecord->where("day", $day["value"])->where("time", "makan siang");
+                            $makanMalam = $family->foodRecord->where("day", $day["value"])->where("time", "makan malam");
 
                             if($sarapan->count()){
                                 foreach ($sarapan as $s) {

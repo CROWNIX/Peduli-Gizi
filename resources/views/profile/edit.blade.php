@@ -6,12 +6,13 @@
         <div></div>
     </x-topbarMobile>
     {{-- Form Edit --}}
-    <form action="/users/{{ $user->username }}" method="POST">
+    <form action="/users/{{ $user->username }}" method="POST" enctype="multipart/form-data">
         @method('put')
         @csrf
         {{-- foto Profile --}}
         <section class="flex flex-col items-center mt-24 mb-4">
             <x-fotoProfile></x-fotoProfile>
+            <input type="file" id="foto" name="image" hidden accept="image/jpg, image/png, image/jpeg">
         </section>
         {{-- End foto profile --}}
         <div class="px-4 mb-20">

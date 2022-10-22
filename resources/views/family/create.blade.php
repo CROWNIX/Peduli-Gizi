@@ -9,7 +9,8 @@
     <form action="/families" class="" method="POST" enctype="multipart/form-data">
         @csrf
         <section class="flex flex-col items-center mt-24">
-            <x-fotoProfile></x-fotoProfile>
+            <x-fotoProfile image="{{ asset('images/profile/default.jpg') }}"></x-fotoProfile>
+            <input type="file" id="foto" name="image" hidden accept="image/jpg, image/png, image/jpeg">
         </section>
         {{-- End foto profile --}}
 
