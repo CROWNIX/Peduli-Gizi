@@ -4,7 +4,7 @@
     @endcomponent
     {{-- topbar --}}
     <x-topbarMobile title="{{ $recipe->title }}">
-        <a href="/food-records/create/?recipe={{ $recipe->slug }}">
+        <a href="#">
             <span class="material-icons hover:text-red-500 focus:text-red-500 cursor-pointer" style="font-size: 28px">
                 delete_forever
             </span>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Family;
+use App\Models\UserNeed;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Helpers\Rumus;
@@ -14,7 +15,7 @@ class FamilyController extends Controller
     {
         $user = User::find(auth()->user()->id);
 
-        if(!$user->age){
+        if (!$user->age) {
             return redirect("/users/$user->username/edit")->with("warning", "Anda harus melengkapi profile terlebih dahulu");
         }
 
@@ -24,7 +25,7 @@ class FamilyController extends Controller
         $fat = Rumus::rumusFat($kalori);
         $carbohydrate = Rumus::rumusCarbohydrate($kalori);
 
-        if($user->family->count()){
+        if ($user->family->count()) {
             foreach ($user->family as $family) {
                 $weight = Rumus::konvertKgToCm($family->weight);
                 $familyKalory = Rumus::rumusKalori($user->gender, $user->age, $user->height, $weight);
@@ -48,7 +49,8 @@ class FamilyController extends Controller
     public function create()
     {
         return view("family.create", [
-            'title' => 'Tambah Keluarga'
+            'title' => 'Tambah Keluarga',
+            "userNeeds" => UserNeed::all()
         ]);
     }
 
@@ -96,7 +98,9 @@ class FamilyController extends Controller
             abort(404);
         }
 
-        return view("", [
+        return view("family.show", [
+            'title' => $family->name,
+            "userNeeds" => UserNeed::all(),
             "family" => $family,
             "kalori" => $kalori,
             "protein" => $protein,

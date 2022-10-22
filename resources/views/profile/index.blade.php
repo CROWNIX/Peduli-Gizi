@@ -15,7 +15,7 @@
     {{-- Menu --}}
     <section class="">
         <div class="flex flex-col px-6 mb-20">
-            <div class="grid grid-cols-6 gap-4 justify-center items-center hover:bg-[#FF9385] p-2 rounded-lg"
+            <div class="cursor-pointer grid grid-cols-6 gap-4 justify-center items-center hover:bg-[#FF9385] p-2 rounded-lg"
                 onclick="window.location.href = '/families'">
                 <div
                     class="col-start-1 col-span-1 bg-[#FFF8EE] text-[#FF9385] flex justify-center items-center rounded-lg py-2">
@@ -32,7 +32,7 @@
                     </span>
                 </div>
             </div>
-            <div class="grid grid-cols-6 gap-4 justify-center items-center hover:bg-[#FF9385] p-2 rounded-lg"
+            <div class="cursor-pointer grid grid-cols-6 gap-4 justify-center items-center hover:bg-[#FF9385] p-2 rounded-lg"
                 onclick="window.location.href = '/users/{{ auth()->user()->username }}/edit'">
                 <div
                     class="col-start-1 col-span-1 bg-[#FFF8EE] text-[#FF9385] flex justify-center items-center rounded-lg py-2">
@@ -49,7 +49,7 @@
                     </span>
                 </div>
             </div>
-            <div class="grid grid-cols-6 gap-4 justify-center items-center hover:bg-[#FF9385] p-2 rounded-lg "
+            <div class="cursor-pointer grid grid-cols-6 gap-4 justify-center items-center hover:bg-[#FF9385] p-2 rounded-lg "
                 onclick="window.location.href = '/food-records'">
                 <div
                     class="col-start-1 col-span-1 bg-[#FFF8EE] text-[#FF9385] flex justify-center items-center rounded-lg py-2">
@@ -68,7 +68,8 @@
             </div>
             <form action="/logout" method="POST" onclick="this.submit()">
                 @csrf
-                <div class="grid grid-cols-6 gap-4 justify-center items-center hover:bg-[#FF9385] p-2 rounded-lg ">
+                <div
+                    class="cursor-pointer grid grid-cols-6 gap-4 justify-center items-center hover:bg-[#FF9385] p-2 rounded-lg ">
                     <div
                         class="col-start-1 col-span-1 bg-[#FFF8EE] text-[#FF9385] flex justify-center items-center rounded-lg py-2">
                         <span class="material-icons-outlined">

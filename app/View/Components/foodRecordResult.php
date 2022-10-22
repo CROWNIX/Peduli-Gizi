@@ -4,18 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class fotoProfile extends Component
+class foodRecordResult extends Component
 {
-
-    public $image;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($image = null)
+    public function __construct()
     {
-        $this->image = $image;
+        //
     }
 
     /**
@@ -25,6 +23,6 @@ class fotoProfile extends Component
      */
     public function render()
     {
-        return view('components.foto-profile');
+        return view('components.food-record-result');
     }
 }

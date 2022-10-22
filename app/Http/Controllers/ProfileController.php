@@ -29,7 +29,6 @@ class ProfileController extends Controller
 
     public function show(User $user)
     {
-        
     }
 
     public function edit(User $user)
@@ -43,7 +42,7 @@ class ProfileController extends Controller
 
     public function update(Request $request, User $user)
     {
-        // dd($request);
+        // dd($request->all());
         // $ruleImage = $request->image ? "image|file" : "";
         $rules = [
             "name" => "required",
@@ -52,8 +51,8 @@ class ProfileController extends Controller
             "gender" => "required",
             // "image" => $ruleImage
         ];
-        
-        if(!$request->name){
+
+        if (!$request->name) {
             $rules = [
                 "image" => "image|file"
             ];
@@ -61,18 +60,18 @@ class ProfileController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        if($request->name){
+        if ($request->name) {
             $validatedData["weight"] = $request->weight;
             $validatedData["height"] = $request->height ?? 151;
             $validatedData["username"] = Str::slug($request->name, '-');
-    
-            if(!$validatedData["weight"]){
+
+            if (!$validatedData["weight"]) {
                 $validatedData["weight"] = $request->gender == "laki-laki" ? 61 : 56;
-            } 
+            }
         }
 
-        if($request->file("image")){
-            if($user->image != "default.jpg"){
+        if ($request->file("image")) {
+            if ($user->image != "default.jpg") {
                 Storage::delete($user->image);
             }
 
