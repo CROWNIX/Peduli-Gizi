@@ -16,7 +16,8 @@
     {{-- Recipe --}}
     <section class="p-4 mt-20 mb-20">
         <div>
-            <img src="{{ asset('images/produk/sego tumpang 1.png') }}" alt="produk" class="w-full rounded-xl">
+            <img src="{{ asset('images/produk/' . $recipe->image) }}" alt="produk"
+                class="w-full rounded-xl h-56 object-cover">
             <div class="text-center text-xl font-bold my-3">{{ $recipe->title }}</div>
             <div class="bg-gray-200 p-4">
                 <div class="text-center text-lg font-bold text-[#F58634] mb-2">Gizi per porsi</div>
