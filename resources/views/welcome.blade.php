@@ -273,7 +273,7 @@
             let navMobile = $('#mobile-menu');
             $('#btn-toggle').on('click', function() {
                 navMobile.toggleClass('hidden')
-                $('#nav-not-login').toggleClass('bg-white')
+                $('#nav-not-login').toggleClass('bg-white text-white')
             })
         </script>
     @endauth
