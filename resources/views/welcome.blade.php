@@ -69,7 +69,7 @@
         </section>
     @else
         <section class="md:hidden block bg-gradient-to-b from-[#69B550] via-orange-200 to-[#69B550] overflow-x-hidden">
-            <nav class="sticky top-0 z-50 border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
+            <nav class="sticky top-0 z-50 border-gray-200 px-2 sm:px-4 py-2.5 rounded">
                 <div class="container flex flex-wrap justify-between items-center mx-auto">
                     <div class="text-center pl-8 text-white">
                         <h1 class="text-lg font-bold">Peduli Gizi</h1>
@@ -272,7 +272,7 @@
         <script>
             let navMobile = $('#mobile-menu');
             $('#btn-toggle').on('click', function() {
-                navMobile.toggleClass('hidden')
+                navMobile.toggleClass('hidden bg-white')
             })
         </script>
     @endauth
