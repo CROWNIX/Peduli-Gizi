@@ -71,7 +71,7 @@
         <section class="md:hidden block bg-gradient-to-b from-[#69B550] via-orange-200 to-[#69B550] overflow-x-hidden">
             <nav class="sticky top-0 z-50 border-gray-200 px-2 sm:px-4 py-2.5 rounded" id="nav-not-login">
                 <div class="container flex flex-wrap justify-between items-center mx-auto">
-                    <div class="text-center pl-8 text-white">
+                    <div class="text-center pl-8 text-white" id="nav-text">
                         <h1 class="text-lg font-bold">Peduli Gizi</h1>
                         <p class="text-xs">Cukupi Gizi Setiap Hari</p>
                     </div>
@@ -273,7 +273,8 @@
             let navMobile = $('#mobile-menu');
             $('#btn-toggle').on('click', function() {
                 navMobile.toggleClass('hidden')
-                $('#nav-not-login').toggleClass('bg-white text-white')
+                $('#nav-not-login').toggleClass('bg-white')
+                $('#nav-text').toggleClass('text-white')
             })
         </script>
     @endauth
