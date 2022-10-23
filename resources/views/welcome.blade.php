@@ -419,7 +419,7 @@
                     </div>
                 @endforeach
             </div>
-            <button
+            <button onclick="window.location.href = '/recipes'"
                 class="shadow-lg text-4xl font-extrabold text-white bg-green-500 hover:bg-white hover:text-green-500 duration-500 hover:outline hover:outline-4 hover:outline-green-500 capitalize rounded-xl py-2 px-14">
                 lainnya
             </button>
@@ -528,7 +528,7 @@
                     </div>
                 </div>
             </div>
-            <button
+            <button onclick="window.location.href = '/login"
                 class="shadow-lg text-4xl font-extrabold text-white bg-green-500 hover:bg-white hover:text-green-500 duration-500 hover:outline hover:outline-4 hover:outline-green-500 capitalize rounded-xl py-2 px-14">
                 masuk
             </button>
