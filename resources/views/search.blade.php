@@ -29,25 +29,26 @@
         <div class="swiper resep-makanan my-2">
             <div class="swiper-wrapper">
                 @foreach ($recipes as $recipe)
-                <div
-                    class=" swiper-slide rounded-xl bg-gradient-to-b p-[3px] from-[#F58634] to-[#69B550] shadow-lg cursor-pointer hover:from-[#69B550] hover:to-[#F58634] duration-200 hover:scale-95">
-                    <div class="flex flex-col justify-between h-full bg-white rounded-lg p-2">
-                        <img src="{{ asset('images/produk/' . $recipe->image) }}" alt="produk" class="w-full">
-                        <div class="title text-base font-bold text-black my-2">
-                            {{ $recipe->title }}
-                        </div>
-                        <p class="text-xs font-extralight text-black">Gizi per porsi</p>
-                        <div class="grid grid-cols-2 gap-0">
-                            <p class="text-2xs font-normal my-0 text-black">Energi : {{ $recipe->calory }} kalori
-                            </p>
-                            <p class="text-2xs font-normal my-0 text-black">Protein : {{ $recipe->protein }} g</p>
-                            <p class="text-2xs font-normal my-0 text-black">Lemak : {{ $recipe->fat }} g</p>
-                            <p class="text-2xs font-normal my-0 text-black">Karbohidrat :
-                                {{ $recipe->carboydrate }} g
-                            </p>
+                    <div
+                        class=" swiper-slide rounded-xl bg-gradient-to-b p-[3px] from-[#F58634] to-[#69B550] shadow-lg cursor-pointer hover:from-[#69B550] hover:to-[#F58634] duration-200 hover:scale-95">
+                        <div class="flex flex-col justify-between h-full bg-white rounded-lg p-2">
+                            <img class="w-full h-24 object-cover" src="{{ asset('images/produk/' . $recipe->image) }}"
+                                alt="produk" class="w-full">
+                            <div class="title text-base font-bold text-black my-2">
+                                {{ $recipe->title }}
+                            </div>
+                            <p class="text-xs font-extralight text-black">Gizi per porsi</p>
+                            <div class="grid grid-cols-2 gap-0">
+                                <p class="text-2xs font-normal my-0 text-black">Energi : {{ $recipe->calory }} kalori
+                                </p>
+                                <p class="text-2xs font-normal my-0 text-black">Protein : {{ $recipe->protein }} g</p>
+                                <p class="text-2xs font-normal my-0 text-black">Lemak : {{ $recipe->fat }} g</p>
+                                <p class="text-2xs font-normal my-0 text-black">Karbohidrat :
+                                    {{ $recipe->carboydrate }} g
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>    
                 @endforeach
             </div>
         </div>
