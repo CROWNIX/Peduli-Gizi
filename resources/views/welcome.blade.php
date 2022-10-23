@@ -176,7 +176,8 @@
                     <div class="swiper-pagination text-[#F58634]"></div>
                 </div>
                 <div class="grid grid-cols-1 my-2">
-                    <button class="text-white rounded-full py-1 bg-[#69B550]">Lainnya</button>
+                    <button onclick="window.location.href = '/recipes'"
+                        class="text-white rounded-full py-1 bg-[#69B550]">Lainnya</button>
                 </div>
             </div>
             <section class="p-4">
